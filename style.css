@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.today {
+  font-size: xx-large;
+  text-align: center;
+}
+
+.topic {
+  border: solid Navy;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.DivButton {
+  margin-top: 1em;
+}
+
+.DivButton div {
+  text-align: center;
+  float: left;
+  width: 26%;
+  border: solid black;
+  margin-left: 1em;
+}
+
+.UserChoicePane {
+  margin-top: 1em;
+  width: 95%;
+  height: 60%;
+  border: solid black;
+  overflow: scroll;
+}
+
+.UserName {
+  border: solid blue;
+  width: 7em;
+  float: left;
+}
+
+
+.clear {
+  clear: both;
+}
+
+
+
