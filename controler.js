@@ -3,6 +3,8 @@ $(document).ready(function(){
 
   updateDate();
 
+  Model_Divs("./Master_Div.csv");
+
 function updateDate(){ // -- 時計(日時曜日)を更新する --
   var date = new Date(),
       yy = date.getYear(),  mm = date.getMonth() + 1, 
@@ -21,4 +23,36 @@ function updateDate(){ // -- 時計(日時曜日)を更新する --
       );
   });
 
+
+function View_updateDivButtons(divArray) { // -- 各課表示を更新する --
+
+  for ( i=0 ; i < divArray.length ; i++ ) {
+    $('.DivButton').append(
+     "<DIV id=\"" + divArray[i][0] + "\">" + divArray[i][1] + "</div>" );
+  }
+
+}
+
+function Model_Divs(filename) { // -- Model:課別のCSVファイルをボタンとして表示する --
+
+  var myArray = $.get(filename,function(data){
+    var myCsv = $.csv()(data);
+    View_updateDivButtons(myCsv);
+  });
+
+}
+
 });
+
+
+
+// -- Debug関数 / オブジェクトのプロパティ一覧をalert --
+function printProperties(obj) {
+    var properties = '';
+    for (var prop in obj){
+        properties += prop + "=" + obj[prop] + "\n";
+    }
+    alert(properties);
+}
+
+

@@ -1,46 +1,173 @@
 @charset "UTF-8";
 
+
+@font-face{
+  font-family:'APJapanesefontT';
+  src: url('APJapanesefontT.eot'); /* here you go, IE */
+}
+@font-face{
+  font-family:'APJapanesefontT';
+  src: url('APJapanesefontT.ttf') format("truetype"); /* everyone else take this */
+}
+#container {
+        width: 100%;
+        position: relative;
+        height: 100%;
+        min-height: 100%;
+}
+#contents {
+        padding-bottom: 50px;
+}
+
 .today {
   font-size: xx-large;
   text-align: center;
+  padding: 10px;
 }
 
 .topic {
   border: solid Navy;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  padding-left: 1em;
 }
 
 .DivButton {
+  cursor: pointer;
   margin-top: 1em;
 }
 
 .DivButton div {
   text-align: center;
   float: left;
-  width: 26%;
+  width: 22%;
   border: solid black;
   margin-left: 1em;
+  padding: 5px 0px;
+}
+
+#System{
+  background-color: #7FDBFF;	/* AQUA */
+}
+
+#Gijyutsu{
+  background-color: #2ECC40;	/* GREEN */
+}
+
+#Unyou{
+  background-color: #3399FF;	/* 水色 */
+}
+
+#Tyoku{
+  background-color: #00ff00;	/* Lime */
 }
 
 .UserChoicePane {
   margin-top: 1em;
+  margin-left: 1em;
   width: 95%;
   height: 60%;
-  border: solid black;
-  overflow: scroll;
+  text-align: center;
+/*  border: solid black;
+  overflow: scroll; */
 }
 
 .UserName {
-  border: solid blue;
+  border: solid #7FDBFF;	/* AQUA */
+  border-width: 7px;
+  background-color: #7FDBFF;	/* AQUA */
   width: 7em;
   float: left;
+  text-align: center;
+  margin: 5px;
+  cursor: pointer;
 }
 
+.UserName_choice {
+  border: solid #000080;	/* Navy */
+  border-width: 7px;
+  background-color: #000080;	/* Navy */
+  color: #FFFFFF;	/* WHITE */
+  width: 7em;
+  float: left;
+  text-align: center;
+  margin: 5px;
+}
 
+.choiceInfo {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+}
+
+#Syokudo {
+  background-color: RED;	/* RED */
+
+}
+
+.Obento {
+  border: solid #FF851B;	/* ORANGE */
+  border-width: 7px;
+  background-color: #FF851B;	/* ORANGE */
+  width: 7em;
+  float: left;
+  text-align: center;
+  margin: 5px;
+}
+
+.Obento_choice {
+  border: solid RED;	/* RED */
+  border-width: 7px;
+  background-color: RED;	/* RED */
+  width: 7em;
+  float: left;
+  text-align: center;
+  margin: 5px;
+}
+
+.UserChoiceOption {
+  margin-top: 1em;
+  margin-left: 1em;
+  width: 95%;
+  height: 60%;
+  
+}
+
+.Option {
+  border: solid #FF851B;	/* ORANGE */
+  border-width: 7px;
+  background-color: #FF851B;	/* ORANGE */
+  width: 7em;
+  float: left;
+  text-align: center;
+  margin: 5px;
+}
+
+.Option_choice {
+  border: solid #FF4136;	/* RED */
+  border-width: 7px;
+  background-color: #FF4136;	/* RED */
+  width: 7em;
+  float: left;
+  text-align: center;
+  margin: 5px;
+}
 .clear {
   clear: both;
 }
 
+div {font-family: "APJapanesefontT"; }
 
 
+
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 98%;
+  height: 50px;
+  background-image: url("images/footer_s.png");
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-position: right bottom;
+}
