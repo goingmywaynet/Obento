@@ -1,9 +1,14 @@
 @charset "UTF-8";
 
+.myForm {
+  float: left;
+}
+
 .today {
   font-size: xx-large;
   text-align: center;
 }
+
 
 .topic {
   border: solid Navy;
@@ -11,9 +16,12 @@
   padding-bottom: 0.5em;
 }
 
+
 .DivButton {
   margin-top: 1em;
 }
+
+
 
 .DivButton div {
   text-align: center;
@@ -23,6 +31,17 @@
   margin-left: 1em;
 }
 
+
+.DivButton FORM {
+  text-align: center;
+  float: left;
+  width: 26%;
+  border: solid black;
+  margin-left: 1em;
+  font-size: xx-large;
+}
+
+
 .UserChoicePane {
   margin-top: 1em;
   width: 95%;
@@ -30,6 +49,7 @@
   border: solid black;
   overflow: scroll;
 }
+
 
 .UserName {
   border: solid blue;
@@ -42,5 +62,20 @@
   clear: both;
 }
 
+
+.userlist {
+  border-spacing: 1em;
+  border: 4px solid blue ;
+  width: 100%;
+}
+
+th {
+  border: 2px solid black;
+  width: 20%;
+}
+
+tr {
+  height: 1em;
+}
 
 

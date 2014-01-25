@@ -1,25 +1,91 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+
 <HTML LANG="ja">
+
 <HEAD>
+
   <META charset="utf-8">
+
   <TITLE>弁当注文アプリ</TITLE>
+
   <link rel="stylesheet" type="text/css" href="style.css">
+
   <script type="text/javascript" src="./static/jQuery/jquery-1.8.3.min.js"></script>
+
   <script type="text/javascript" src="controler.js" charset="UTF-8"></script>
+
 </HEAD>
+
 <BODY>
 
+
 <DIV class="today">○月○日 (○曜日)</DIV>
+
 <DIV class="topic">・本日どん亭 50円引き！</DIV>
+
+
 <DIV class="DivButton">
-  <DIV id="System">A課</DIV>
-  <DIV id="Gijyutsu">B課</DIV>
-  <DIV id="Unyou">C課</DIV>
+  <FORM id="System">
+        <INPUT TYPE=button
+         NAME=System
+         VALUE="A課"
+         ONCLICK=expression
+         >
+  </FORM>
+
+  <FORM id="Gijyutsu">
+        <INPUT TYPE=button
+         NAME=Gijyutsu
+         VALUE="B課"
+         ONCLICK=expression
+	 fontsize=xx-large
+        >
+</FORM>
+
+  <FORM id="Unyou">
+        <INPUT TYPE=button
+         NAME=Unyou
+         VALUE="C課"
+         ONCLICK=expression
+        >
+  </FORM>
+
 </DIV>
+
+
 <div class="clear"></div>
+
 <DIV class="UserChoicePane">
-  <div class="UserName">○○さん</div>
+
+  <FORM class="UserName">
+	  <INPUT TYPE=button
+	   NAME=objectname
+	   VALUE=name1
+           ONCLICK=expression>
+  </FORM>
+
 </DIV>
+
+
+
+<FORM>
+  <INPUT TYPE=button
+         NAME=objectname
+         VALUE=objectvalue
+	 font-size=5px
+         ONCICK=expression>
+</FORM>
+
+<table class="userlist">
+ <tr>
+  <th>1人目</th><th>２人目</th><th>３人目</th><th>４人目</th><th>５人目</th>
+ </tr>
+ <tr>
+	 <th>６人目</th><th>７人目</th><th>８人目</th><th>９人目</th><th class="n1">１０人目</th>
+ </tr>
+</table>
+
+
 
 </BODY>
 </HTML>
