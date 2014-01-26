@@ -3,7 +3,7 @@ $(document).ready(function(){
 
   updateDate();
 
-  Model_Divs("./Master_Div.csv");
+  Model_Divs("DB/Master_Div.csv");
 
 function updateDate(){ // -- 時計(日時曜日)を更新する --
   var date = new Date(),
