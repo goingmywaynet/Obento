@@ -2,9 +2,19 @@
 $(document).ready(function(){
 
   updateDate();
+  
+  $("#System").click( function(){
+    $(".UserChoicePane").append(
+      "<div class=\"UserName\">test</div>"
+      );
+  });
 
-  Model_Divs("DB/Master_Div.csv");
+  Model_Divs("DB/Master_Div.csv",updateDiv);
 
+});
+
+// -- View 関数 --
+//
 function updateDate(){ // -- 時計(日時曜日)を更新する --
   var date = new Date(),
       yy = date.getYear(),  mm = date.getMonth() + 1, 
@@ -16,15 +26,7 @@ function updateDate(){ // -- 時計(日時曜日)を更新する --
   var clockText = yy + "/" + mm + "/" + dd + " (" + day[date.getDay()] +") " + HH + ":" + MM;
   $('.today').html(clockText);
 }
-  
-  $("#System").click( function(){
-    $(".UserChoicePane").append(
-      "<div class=\"UserName\">test</div>"
-      );
-  });
-
-
-function View_updateDivButtons(divArray) { // -- 各課表示を更新する --
+var updateDiv = function View_updateDivButtons(divArray) { // -- 各課表示を更新する --
 
   for ( i=0 ; i < divArray.length ; i++ ) {
     $('.DivButton').append(
@@ -33,21 +35,19 @@ function View_updateDivButtons(divArray) { // -- 各課表示を更新する --
 
 }
 
-function Model_Divs(filename) { // -- Model:課別のCSVファイルをボタンとして表示する --
-
-  var myArray = $.get(filename,function(data){
+// -- Model 関数 --
+// 
+function Model_Divs(filename,callback) { // -- Model:課別のCSVファイルをボタンとして表示する --
+  $.get(filename,function(data){
     var myCsv = $.csv()(data);
-    View_updateDivButtons(myCsv);
+    callback(myCsv);
   });
-
 }
 
-});
+// -- Tool 関数 --
+//
+function printProperties(obj) { // -- Debug関数 / オブジェクトのプロパティ一覧をalert --
 
-
-
-// -- Debug関数 / オブジェクトのプロパティ一覧をalert --
-function printProperties(obj) {
     var properties = '';
     for (var prop in obj){
         properties += prop + "=" + obj[prop] + "\n";

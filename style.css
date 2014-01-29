@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 
-@font-face{
-  font-family:'APJapanesefontT';
-  src: url('APJapanesefontT.eot'); /* here you go, IE */
-}
-@font-face{
-  font-family:'APJapanesefontT';
-  src: url('APJapanesefontT.ttf') format("truetype"); /* everyone else take this */
-}
+/* @font-face{*/
+/*   font-family:'APJapanesefontT';*/
+/*   src: url('APJapanesefontT.eot'); /* here you go, IE */*/
+/* }*/
+/* @font-face{*/
+/*   font-family:'APJapanesefontT';*/
+/*   src: url('APJapanesefontT.ttf') format("truetype"); /* everyone else take this */*/
+/* }*/
 #container {
         width: 100%;
         position: relative;
