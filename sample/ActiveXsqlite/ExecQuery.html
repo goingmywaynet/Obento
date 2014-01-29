@@ -1,0 +1,46 @@
+<html>
+<script LANGUAGE="JavaScript">
+
+function ExecQuery() {
+
+    var path = "C:\\proj\\obento\\";
+
+    var db_nm = document.getElementById("db_nm").value;
+
+    var sqlstr = document.getElementById("sqlstr").value;
+
+
+    var cmdstr = path + "sqlite3.exe "
+               + path + db_nm + " "
+               + " \"" + sqlstr + "\"";
+
+    alert(cmdstr);
+    var obj = new ActiveXObject("WScript.Shell");
+
+    var oe = obj.Exec(cmdstr);
+    var r = oe.StdOut.ReadAll();
+    alert(r);
+    
+    var result = document.getElementById('result');
+    result.innerHTML = "<p>" + r + "</p>";
+}
+</script>
+<body>
+
+<form name="f1">
+<p>
+DB Name : <input type="text" id="db_nm" value="testdb">
+</p>
+<p>
+SQL<br>
+<textarea id="sqlstr" rows="4" cols="40">select * from shiten;</textarea>
+</p>
+<p>
+<input type="button" value="Go" onclick="javascript:ExecQuery()">
+</p>
+</form>
+
+<div id="result"></div>
+
+</body>
+</html>
