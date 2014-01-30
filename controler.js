@@ -2,9 +2,67 @@
 $(document).ready(function(){
 
   updateDate();
+  
+  $("#System").click( function(){
+    $(".UserChoicePane").append(
+      "<div class=\"UserName\">test</div>"
+      );
+  });
 
-  Model_Divs("DB/Master_Div.csv");
+  // -- オブジェクト生成時に画面更新関数を渡すパターン
+  // var myDivPane = new Model_DivPane(View_updateDivPane);
+  // myDivPane.updateObjArray();
+  
+  // -- オブジェクト生成後に画面更新関数を渡すパターン
+  var myDivPane = new Model_DivPane();
+  myDivPane.setUpdateView(View_updateDivPane);
+  myDivPane.updateObjArray();
 
+  //Debug
+  // console.log( myDivPane.divObjArray );
+
+});
+
+// -- Model Object --
+//
+function Model_DivPane (callback) { // -- 課表示ペイン Model --
+  // データ更新後の画面更新関数を callback として渡す
+
+  // closed Propertys
+  var updateView = callback;
+
+  // Propertys
+  this.divObjArray = new Array();     // 課名表示オブジェクトの配列
+
+  // Setter Methods
+  this.setUpdateView = function(func) { // --- 画面更新コールバック関数を設定する
+    updateView = func;
+  }
+
+  // Objects
+  var divObj = { 'name': "" ,
+                 'ID'  : new Number('0000') }
+
+  // Methods
+  this.updateObjArray = function() { // --- データを取得して画面更新のためのコールバック関数を呼び出す
+    $.get("DB/Master_Div.csv",function(data){
+      var divArray = $.csv()(data);
+      var divObjArray = new Array();
+      for ( i=0 ; i < divArray.length ; i++ ) {
+        divObjArray.push({'name': divArray[i][1] , 'ID': divArray[i][0]})
+      }
+      this.divObjArray = divObjArray;
+      updateView ? updateView(this.divObjArray): 0 ;
+      //Debug
+      // console.log(this.divObjArray);
+    });
+  }
+
+}
+
+
+// -- View 関数 --
+//
 function updateDate(){ // -- 時計(日時曜日)を更新する --
   var date = new Date(),
       yy = date.getYear(),  mm = date.getMonth() + 1, 
@@ -16,38 +74,18 @@ function updateDate(){ // -- 時計(日時曜日)を更新する --
   var clockText = yy + "/" + mm + "/" + dd + " (" + day[date.getDay()] +") " + HH + ":" + MM;
   $('.today').html(clockText);
 }
-  
-  $("#System").click( function(){
-    $(".UserChoicePane").append(
-      "<div class=\"UserName\">test</div>"
-      );
-  });
 
-
-function View_updateDivButtons(divArray) { // -- 各課表示を更新する --
-
-  for ( i=0 ; i < divArray.length ; i++ ) {
+function View_updateDivPane(divObjArray) { // -- 各課表示を更新する --
+  for ( i=0 ; i < divObjArray.length ; i++ ) {
     $('.DivButton').append(
-     "<DIV id=\"" + divArray[i][0] + "\">" + divArray[i][1] + "</div>" );
+     "<DIV id=\"" + divObjArray[i].ID + "\">" + divObjArray[i].name + "</div>" );
   }
-
 }
 
-function Model_Divs(filename) { // -- Model:課別のCSVファイルをボタンとして表示する --
+// -- Tool 関数 --
+//
+function printProperties(obj) { // -- Debug関数 / オブジェクトのプロパティ一覧をalert --
 
-  var myArray = $.get(filename,function(data){
-    var myCsv = $.csv()(data);
-    View_updateDivButtons(myCsv);
-  });
-
-}
-
-});
-
-
-
-// -- Debug関数 / オブジェクトのプロパティ一覧をalert --
-function printProperties(obj) {
     var properties = '';
     for (var prop in obj){
         properties += prop + "=" + obj[prop] + "\n";
