@@ -10,7 +10,7 @@
 		<right_margin>30</right_margin>
 	</page_setting>
 	<category_index>0</category_index>
-	<zoom>1.0395799676898223</zoom>
+	<zoom>1.5</zoom>
 	<x>0</x>
 	<y>0</y>
 	<default_color>
@@ -40,15 +40,15 @@
 		<use_bezier_curve>false</use_bezier_curve>
 		<suspend_validator>false</suspend_validator>
 		<export_setting>
-			<category_name_to_export></category_name_to_export>
-			<ddl_output></ddl_output>
+			<category_name_to_export>全体</category_name_to_export>
+			<ddl_output>C:\work\pleiades-e3.7-cpp-jre_20110704\workspace\Obento\ObentoDB.sql</ddl_output>
 			<excel_output></excel_output>
 			<excel_template></excel_template>
 			<image_output></image_output>
 			<put_diagram_on_excel>false</put_diagram_on_excel>
 			<use_logical_name_as_sheet>false</use_logical_name_as_sheet>
-			<open_after_saved>false</open_after_saved>
-			<create_comment>true</create_comment>
+			<open_after_saved>true</open_after_saved>
+			<create_comment>false</create_comment>
 			<create_foreignKey>true</create_foreignKey>
 			<create_index>true</create_index>
 			<create_sequence>true</create_sequence>
@@ -62,10 +62,10 @@
 			<drop_tablespace>true</drop_tablespace>
 			<drop_trigger>true</drop_trigger>
 			<drop_view>true</drop_view>
-			<inline_column_comment>true</inline_column_comment>
-			<inline_table_comment>true</inline_table_comment>
-			<comment_value_description>true</comment_value_description>
-			<comment_value_logical_name>false</comment_value_logical_name>
+			<inline_column_comment>false</inline_column_comment>
+			<inline_table_comment>false</inline_table_comment>
+			<comment_value_description>false</comment_value_description>
+			<comment_value_logical_name>true</comment_value_logical_name>
 			<comment_value_logical_name_description>false</comment_value_logical_name_description>
 			<comment_replace_line_feed>false</comment_replace_line_feed>
 			<comment_replace_string></comment_replace_string>
@@ -100,7 +100,7 @@
 			<id></id>
 			<height>-1</height>
 			<width>-1</width>
-				<font_name>Lucida Grande</font_name>
+				<font_name>MS UI Gothic</font_name>
 				<font_size>9</font_size>
 			<x>50</x>
 			<y>50</y>
@@ -113,7 +113,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2014-01-24 20:38:13</creation_date>
-			<updated_date>2014-01-26 16:04:06</updated_date>
+			<updated_date>2014-01-30 20:43:27</updated_date>
 			<model_property>
 				<name>プロジェクト名</name>
 				<value></value>
@@ -186,7 +186,7 @@
 			<zerofill>false</zerofill>
 			<binary>false</binary>
 			<args></args>
-			<description>1:オーダー可能&#x0A;0:オーダー不可（メニュー廃止、休止など）</description>
+			<description>1:オーダー可能&#x0D;&#x0A;0:オーダー不可（メニュー廃止、休止など）</description>
 			<logical_name>有効フラグ</logical_name>
 			<physical_name>enable_flag</physical_name>
 			<type>integer</type>
@@ -337,72 +337,12 @@
 			<binary>false</binary>
 			<args></args>
 			<description></description>
-			<logical_name>選択オプション1</logical_name>
-			<physical_name>selected_opt1</physical_name>
+			<logical_name>選択オプション</logical_name>
+			<physical_name>selected_opt</physical_name>
 			<type>text</type>
 		</word>
 		<word>
 			<id>13</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<description></description>
-			<logical_name>選択オプション2</logical_name>
-			<physical_name>selected_opt2</physical_name>
-			<type>text</type>
-		</word>
-		<word>
-			<id>14</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<description></description>
-			<logical_name>選択オプション3</logical_name>
-			<physical_name>selected_opt3</physical_name>
-			<type>text</type>
-		</word>
-		<word>
-			<id>15</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<description></description>
-			<logical_name>選択オプション4</logical_name>
-			<physical_name>selected_opt4</physical_name>
-			<type>text</type>
-		</word>
-		<word>
-			<id>16</id>
-			<length>null</length>
-			<decimal>null</decimal>
-			<array>false</array>
-			<array_dimension>null</array_dimension>
-			<unsigned>false</unsigned>
-			<zerofill>false</zerofill>
-			<binary>false</binary>
-			<args></args>
-			<description></description>
-			<logical_name>選択オプション5</logical_name>
-			<physical_name>selected_opt5</physical_name>
-			<type>text</type>
-		</word>
-		<word>
-			<id>17</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -417,7 +357,7 @@
 			<type>integer</type>
 		</word>
 		<word>
-			<id>18</id>
+			<id>14</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -432,7 +372,7 @@
 			<type>text</type>
 		</word>
 		<word>
-			<id>19</id>
+			<id>15</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -447,7 +387,7 @@
 			<type>integer</type>
 		</word>
 		<word>
-			<id>20</id>
+			<id>16</id>
 			<length>null</length>
 			<decimal>null</decimal>
 			<array>false</array>
@@ -465,8 +405,169 @@
 	<tablespace_set>
 	</tablespace_set>
 	<contents>
-		<table>
+		<note>
 			<id>0</id>
+			<height>-1</height>
+			<width>-1</width>
+				<font_name>MS UI Gothic</font_name>
+				<font_size>9</font_size>
+			<x>444</x>
+			<y>252</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<comment_connection>
+					<id>0</id>
+					<source>4</source>
+					<target>0</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+				</comment_connection>
+			</connections>
+			<text>ユーザが弁当を選択した時に、&#x0D;&#x0A;　選択した弁当ID＝弁当オプション関連．弁当ID　and&#x0A;　弁当オプション関連．オプショングループ＝オプションマスタ．オプショングループ&#x0A;が存在してたら&#x0D;&#x0A;そのオプショングループのオプション名を表示し、ユーザに選択させる。&#x0A;ユーザが選択したオプション名を「注文T．選択オプション」に保存する。</text>
+		</note>
+		<table>
+			<id>1</id>
+			<height>107</height>
+			<width>223</width>
+				<font_name>MS UI Gothic</font_name>
+				<font_size>9</font_size>
+			<x>444</x>
+			<y>385</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+			</connections>
+			<physical_name>M_OPTION</physical_name>
+			<logical_name>オプションマスタ</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+				<normal_column>
+					<word_id>5</word_id>
+					<id>0</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>integer</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<unique_key>true</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>4</word_id>
+					<id>1</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>integer</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>6</word_id>
+					<id>2</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>text</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>2</id>
 			<height>128</height>
 			<width>178</width>
 				<font_name>MS UI Gothic</font_name>
@@ -480,9 +581,9 @@
 			</color>
 			<connections>
 				<relation>
-					<id>0</id>
-					<source>3</source>
-					<target>0</target>
+					<id>1</id>
+					<source>5</source>
+					<target>2</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -510,8 +611,8 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>19</word_id>
-					<id>0</id>
+					<word_id>15</word_id>
+					<id>3</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -519,7 +620,7 @@
 					<type>integer</type>
 					<constraint></constraint>
 					<default_value></default_value>
-					<auto_increment>true</auto_increment>
+					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>true</primary_key>
@@ -543,9 +644,9 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>1</id>
-					<referenced_column>6</referenced_column>
-					<relation>0</relation>
+					<id>4</id>
+					<referenced_column>14</referenced_column>
+					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -557,7 +658,7 @@
 					<foreign_key>true</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
+					<unique_key>false</unique_key>
 					<character_set></character_set>
 					<collation></collation>
 					<sequence>
@@ -577,8 +678,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>20</word_id>
-					<id>2</id>
+					<word_id>16</word_id>
+					<id>5</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -611,7 +712,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>3</word_id>
-					<id>3</id>
+					<id>6</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -652,232 +753,7 @@
 			</table_properties>
 		</table>
 		<table>
-			<id>1</id>
-			<height>86</height>
-			<width>154</width>
-				<font_name>MS UI Gothic</font_name>
-				<font_size>9</font_size>
-			<x>16</x>
-			<y>236</y>
-			<color>
-				<r>128</r>
-				<g>128</g>
-				<b>192</b>
-			</color>
-			<connections>
-			</connections>
-			<physical_name>M_SHOP</physical_name>
-			<logical_name>店マスタ</logical_name>
-			<description></description>
-			<constraint></constraint>
-			<primary_key_name></primary_key_name>
-			<option></option>
-			<columns>
-				<normal_column>
-					<word_id>17</word_id>
-					<id>4</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>integer</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>true</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>true</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>18</word_id>
-					<id>5</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>text</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-			</columns>
-			<indexes>
-			</indexes>
-			<complex_unique_key_list>
-			</complex_unique_key_list>
-			<table_properties>
-				<schema></schema>
-			</table_properties>
-		</table>
-		<note>
-			<id>2</id>
-			<height>96</height>
-			<width>381</width>
-				<font_name>MS UI Gothic</font_name>
-				<font_size>9</font_size>
-			<x>444</x>
-			<y>276</y>
-			<color>
-				<r>128</r>
-				<g>128</g>
-				<b>192</b>
-			</color>
-			<connections>
-				<comment_connection>
-					<id>1</id>
-					<source>7</source>
-					<target>2</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-				</comment_connection>
-			</connections>
-			<text>ユーザが弁当を選択した時に、&#x0D;&#x0A;　選択した弁当ID＝弁当オプション関連．弁当ID　and&#x0A;　弁当オプション関連．オプショングループ＝オプションマスタ．オプショングループ&#x0A;が存在してたら&#x0D;&#x0A;そのオプショングループのオプション名を表示し、ユーザに選択させる。&#x0A;ユーザが選択したオプション名を「注文T．選択オプション」に保存する。</text>
-		</note>
-		<table>
 			<id>3</id>
-			<height>86</height>
-			<width>137</width>
-				<font_name>MS UI Gothic</font_name>
-				<font_size>9</font_size>
-			<x>24</x>
-			<y>36</y>
-			<color>
-				<r>128</r>
-				<g>128</g>
-				<b>192</b>
-			</color>
-			<connections>
-			</connections>
-			<physical_name>M_SECTION</physical_name>
-			<logical_name>課マスタ</logical_name>
-			<description></description>
-			<constraint></constraint>
-			<primary_key_name></primary_key_name>
-			<option></option>
-			<columns>
-				<normal_column>
-					<word_id>10</word_id>
-					<id>6</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>integer</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>true</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>true</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>11</word_id>
-					<id>7</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>text</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-			</columns>
-			<indexes>
-			</indexes>
-			<complex_unique_key_list>
-			</complex_unique_key_list>
-			<table_properties>
-				<schema></schema>
-			</table_properties>
-		</table>
-		<table>
-			<id>4</id>
 			<height>86</height>
 			<width>171</width>
 				<font_name>Lucida Grande</font_name>
@@ -892,8 +768,8 @@
 			<connections>
 				<relation>
 					<id>2</id>
-					<source>6</source>
-					<target>4</target>
+					<source>7</source>
+					<target>3</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -921,8 +797,8 @@
 			<option></option>
 			<columns>
 				<normal_column>
-					<id>8</id>
-					<referenced_column>13</referenced_column>
+					<id>7</id>
+					<referenced_column>18</referenced_column>
 					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -935,7 +811,7 @@
 					<foreign_key>true</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
+					<unique_key>false</unique_key>
 					<character_set></character_set>
 					<collation></collation>
 					<sequence>
@@ -956,7 +832,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>4</word_id>
-					<id>9</id>
+					<id>8</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -996,10 +872,10 @@
 					<name></name>
 					<columns>
 						<column>
-							<id>8</id>
+							<id>7</id>
 						</column>
 						<column>
-							<id>9</id>
+							<id>8</id>
 						</column>
 					</columns>
 				</complex_unique_key>
@@ -1009,30 +885,74 @@
 			</table_properties>
 		</table>
 		<table>
-			<id>5</id>
-			<height>107</height>
-			<width>223</width>
+			<id>4</id>
+			<height>149</height>
+			<width>178</width>
 				<font_name>MS UI Gothic</font_name>
 				<font_size>9</font_size>
-			<x>444</x>
-			<y>385</y>
+			<x>552</x>
+			<y>24</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
 				<b>192</b>
 			</color>
 			<connections>
+				<relation>
+					<id>3</id>
+					<source>7</source>
+					<target>4</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>4</id>
+					<source>2</source>
+					<target>4</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
 			</connections>
-			<physical_name>M_OPTION</physical_name>
-			<logical_name>オプションマスタ</logical_name>
+			<physical_name>T_ORDER</physical_name>
+			<logical_name>注文テーブル</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>5</word_id>
-					<id>10</id>
+					<word_id>8</word_id>
+					<id>9</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1040,7 +960,7 @@
 					<type>integer</type>
 					<constraint></constraint>
 					<default_value></default_value>
-					<auto_increment>true</auto_increment>
+					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>true</primary_key>
@@ -1064,8 +984,42 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>4</word_id>
+					<word_id>7</word_id>
+					<id>10</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>text</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
 					<id>11</id>
+					<referenced_column>3</referenced_column>
+					<relation>4</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1074,7 +1028,7 @@
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
+					<foreign_key>true</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
@@ -1097,8 +1051,139 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>6</word_id>
 					<id>12</id>
+					<referenced_column>18</referenced_column>
+					<relation>3</relation>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>integer</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>12</word_id>
+					<id>13</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>text</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>5</id>
+			<height>86</height>
+			<width>137</width>
+				<font_name>MS UI Gothic</font_name>
+				<font_size>9</font_size>
+			<x>24</x>
+			<y>36</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+			</connections>
+			<physical_name>M_SECTION</physical_name>
+			<logical_name>課マスタ</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+				<normal_column>
+					<word_id>10</word_id>
+					<id>14</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>integer</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<unique_key>true</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>11</word_id>
+					<id>15</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1140,6 +1225,103 @@
 		</table>
 		<table>
 			<id>6</id>
+			<height>86</height>
+			<width>154</width>
+				<font_name>MS UI Gothic</font_name>
+				<font_size>9</font_size>
+			<x>16</x>
+			<y>236</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+			</connections>
+			<physical_name>M_SHOP</physical_name>
+			<logical_name>店マスタ</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+				<normal_column>
+					<word_id>13</word_id>
+					<id>16</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>integer</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<unique_key>true</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>14</word_id>
+					<id>17</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>text</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>7</id>
 			<height>149</height>
 			<width>177</width>
 				<font_name>MS UI Gothic</font_name>
@@ -1153,9 +1335,9 @@
 			</color>
 			<connections>
 				<relation>
-					<id>3</id>
-					<source>1</source>
-					<target>6</target>
+					<id>5</id>
+					<source>6</source>
+					<target>7</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -1184,7 +1366,7 @@
 			<columns>
 				<normal_column>
 					<word_id>0</word_id>
-					<id>13</id>
+					<id>18</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1192,7 +1374,7 @@
 					<type>integer</type>
 					<constraint></constraint>
 					<default_value></default_value>
-					<auto_increment>true</auto_increment>
+					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>true</primary_key>
@@ -1216,9 +1398,9 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>14</id>
-					<referenced_column>4</referenced_column>
-					<relation>3</relation>
+					<id>19</id>
+					<referenced_column>16</referenced_column>
+					<relation>5</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1230,7 +1412,7 @@
 					<foreign_key>true</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
+					<unique_key>false</unique_key>
 					<character_set></character_set>
 					<collation></collation>
 					<sequence>
@@ -1251,7 +1433,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>1</word_id>
-					<id>15</id>
+					<id>20</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1284,7 +1466,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>9</word_id>
-					<id>16</id>
+					<id>21</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1317,7 +1499,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>2</word_id>
-					<id>17</id>
+					<id>22</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1325,380 +1507,6 @@
 					<type>integer</type>
 					<constraint></constraint>
 					<default_value>1</default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-			</columns>
-			<indexes>
-			</indexes>
-			<complex_unique_key_list>
-			</complex_unique_key_list>
-			<table_properties>
-				<schema></schema>
-			</table_properties>
-		</table>
-		<table>
-			<id>7</id>
-			<height>233</height>
-			<width>178</width>
-				<font_name>MS UI Gothic</font_name>
-				<font_size>9</font_size>
-			<x>546</x>
-			<y>24</y>
-			<color>
-				<r>128</r>
-				<g>128</g>
-				<b>192</b>
-			</color>
-			<connections>
-				<relation>
-					<id>4</id>
-					<source>6</source>
-					<target>7</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-					<child_cardinality>1..n</child_cardinality>
-					<parent_cardinality>1</parent_cardinality>
-					<reference_for_pk>true</reference_for_pk>
-					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
-					<on_update_action>RESTRICT</on_update_action>
-					<referenced_column>null</referenced_column>
-					<referenced_complex_unique_key>null</referenced_complex_unique_key>
-				</relation>
-				<relation>
-					<id>5</id>
-					<source>0</source>
-					<target>7</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-					<child_cardinality>1..n</child_cardinality>
-					<parent_cardinality>1</parent_cardinality>
-					<reference_for_pk>true</reference_for_pk>
-					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
-					<on_update_action>RESTRICT</on_update_action>
-					<referenced_column>null</referenced_column>
-					<referenced_complex_unique_key>null</referenced_complex_unique_key>
-				</relation>
-			</connections>
-			<physical_name>T_ORDER</physical_name>
-			<logical_name>注文テーブル</logical_name>
-			<description></description>
-			<constraint></constraint>
-			<primary_key_name></primary_key_name>
-			<option></option>
-			<columns>
-				<normal_column>
-					<word_id>8</word_id>
-					<id>18</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>integer</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>true</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>true</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>7</word_id>
-					<id>19</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>text</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>20</id>
-					<referenced_column>0</referenced_column>
-					<relation>5</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>integer</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>21</id>
-					<referenced_column>13</referenced_column>
-					<relation>4</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>integer</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>12</word_id>
-					<id>22</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>text</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>13</word_id>
-					<id>23</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>text</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>14</word_id>
-					<id>24</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>text</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>15</word_id>
-					<id>25</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>text</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>16</word_id>
-					<id>26</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>text</type>
-					<constraint></constraint>
-					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>false</not_null>
@@ -1735,6 +1543,1074 @@
 	<column_groups>
 	</column_groups>
 	<test_data_list>
+			<test_data>
+				<name>ObentoTestData</name>
+				<export_order>0</export_order>
+				<table_test_data>
+					<table_id>5</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>14</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>15</column_id>
+								<value>スマイル課</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>14</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>15</column_id>
+								<value>どきどき課</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>14</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>15</column_id>
+								<value>ハピネス課</value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>14</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>15</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>課名称%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>課名称1</select>
+								<select>課名称2</select>
+								<select>課名称3</select>
+								<select>課名称4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+				<table_test_data>
+					<table_id>2</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 星空 みゆき</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 日野 あかね</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 黄瀬 やよい</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>4</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 緑川 なお</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>5</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 青木 れいか</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>6</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 相田 マナ</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>7</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 菱川 六花</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>8</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 四葉 ありす</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>9</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 剣崎 真琴</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>10</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 円 亜久里</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>11</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 愛乃 めぐみ</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>12</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value> 白雪 ひめ</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>3</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>4</column_id>
+								<type>外部キー</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>5</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>利用者名%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>利用者名1</select>
+								<select>利用者名2</select>
+								<select>利用者名3</select>
+								<select>利用者名4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>6</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+				<table_test_data>
+					<table_id>6</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>16</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>17</column_id>
+								<value>吉田家</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>16</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>17</column_id>
+								<value>竹屋</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>16</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>17</column_id>
+								<value>きす家</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>16</column_id>
+								<value>4</value>
+							</column_data>
+							<column_data>
+								<column_id>17</column_id>
+								<value>なか卵</value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>16</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>17</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>店名称%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>店名称1</select>
+								<select>店名称2</select>
+								<select>店名称3</select>
+								<select>店名称4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+				<table_test_data>
+					<table_id>7</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>牛丼 並</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>350</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>牛丼 大</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>400</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>ステーキ</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>500</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>0</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>4</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>焼肉定食 小</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>300</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>5</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>焼肉 定食 中</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>350</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>6</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>焼肉定食 大</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>400</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>7</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>ハーフ＆ハーフ 中</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>350</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>8</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>ハーフ＆ハーフ 大</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>450</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>9</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>4</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>親子丼 小</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>300</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>18</column_id>
+								<value>10</value>
+							</column_data>
+							<column_data>
+								<column_id>19</column_id>
+								<value>5</value>
+							</column_data>
+							<column_data>
+								<column_id>20</column_id>
+								<value>親子丼 大</value>
+							</column_data>
+							<column_data>
+								<column_id>21</column_id>
+								<value>400</value>
+							</column_data>
+							<column_data>
+								<column_id>22</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>18</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>19</column_id>
+								<type>外部キー</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>20</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>弁当名称%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>弁当名称1</select>
+								<select>弁当名称2</select>
+								<select>弁当名称3</select>
+								<select>弁当名称4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>21</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>22</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+				<table_test_data>
+					<table_id>1</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>白米</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>じゅーしー</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>チャーハン</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>4</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>カレー</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>5</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>チャーハン</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>6</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>カレー</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>7</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>天津飯</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>8</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>ちゃんぽん</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>9</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>カツ丼</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>10</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>天丼</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>11</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>牛丼</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>0</column_id>
+								<value>12</value>
+							</column_data>
+							<column_data>
+								<column_id>1</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>親子丼</value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>0</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>1</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>2</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>オプション名%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>オプション名1</select>
+								<select>オプション名2</select>
+								<select>オプション名3</select>
+								<select>オプション名4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+				<table_test_data>
+					<table_id>3</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>7</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>8</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>7</column_id>
+								<value>4</value>
+							</column_data>
+							<column_data>
+								<column_id>8</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>7</column_id>
+								<value>5</value>
+							</column_data>
+							<column_data>
+								<column_id>8</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>7</column_id>
+								<value>6</value>
+							</column_data>
+							<column_data>
+								<column_id>8</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>7</column_id>
+								<value>7</value>
+							</column_data>
+							<column_data>
+								<column_id>8</column_id>
+								<value>2</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>7</column_id>
+								<value>8</value>
+							</column_data>
+							<column_data>
+								<column_id>8</column_id>
+								<value>2</value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>7</column_id>
+								<type>外部キー</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>8</column_id>
+								<type>フォーマット</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+			</test_data>
 	</test_data_list>
 	<sequence_set>
 	</sequence_set>
