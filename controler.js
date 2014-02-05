@@ -23,15 +23,21 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
   $(".DivButton > div").live("click", function() {
     //Debug
     // console.log( "DivButton Clicked " + $(this).attr("id") );
+    objSectionModel.setSelectedID($(this).attr("id"));
     $(".UserChoicePane").empty();
-    objUserModel.updateObjArray($(this).attr("id"));
+    objUserModel.updateObjArray(objSectionModel.selectedID);
   });
 
   // -- ユーザボタンを押したときの処理 --
   $(".UserName").live("click", function() {
     //Debug
     // console.log( "UserName Clicked " + $(this).attr("id") + $(this).text() );
-    window.open("http://www.google.co.jp/search?q=" + $(this).text() + "&tbm=isch");
+    objUserModel.setSelectedID($(this).attr("id"));
+    // window.open("http://www.google.co.jp/search?q=" + $(this).text() + "&tbm=isch");
+    $(".topic").append("<p>" + objSectionModel.selectedObj.name + "の " +
+        objUserModel.selectedObj.user_name +"さんですね！</p>");
+    $(".DivButton").empty();
+    $(".UserChoicePane").empty();
   });
 
   // 画面初期起動処理
@@ -52,7 +58,7 @@ function Model(callback) { // -- モデルの継承用親クラス --
   this.updateViewFunc = callback; // Viewを更新するためのコールバック関数
   this.objArray = new Array();    // モデルデータ配列
   this.selectedObj = {};          // モデル被選択object
-  this.modelID = new Number();    // モデル被選択ID
+  this.selectedID = new Number();    // モデル被選択ID
 
   // Objects
   var section = { 'name': "" ,
@@ -69,9 +75,22 @@ function Model(callback) { // -- モデルの継承用親クラス --
     this.updateViewFunc = func;
   }
 
+  this.setSelectedID = function(selectedId) { // --- 選択された id を元に selectedObj に代入
+    this.selectedID = selectedId;
+    for ( i=0 ; i < this.objArray.length ; i++ ) {
+      if ( this.objArray[i].ID == selectedId ) {
+        this.selectedObj = this.objArray[i];
+      }
+      if ( this.objArray[i].user_id == selectedId ) {
+        this.selectedObj = this.objArray[i];
+      }
+    }
+  }
+
+
   // Methods
   this.updateObjArray = function() { // --- csvデータを取得して画面更新のためのコールバック関数を呼び出す
-    console.log(this.constructor.name + " メソッドがオーバーライトされていません！");
+    console.log(this.constructor.name + " hogeメソッドがオーバーライトされていません！");
   }
 
 }
