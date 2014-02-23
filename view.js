@@ -1,15 +1,9 @@
 // -- View 関数 --
 //
 function updateDate(){ // -- 時計(日時曜日)を更新する --
-  var date = new Date(),
-      yy = date.getYear(),  mm = date.getMonth() + 1, 
-      dd = date.getDate(),  day = ["日","月","火","水","木","金","土"],
-      HH = date.getHours(), MM = date.getMinutes();
-  if (yy < 2000) { yy += 1900; }
-  if (mm < 10) { mm = "0" + mm; } if (dd < 10) { dd = "0" + dd; }
-  if (HH < 10) { HH = "0" + HH; } if (MM < 10) { MM = "0" + MM; }
-  var clockText = yy + "/" + mm + "/" + dd + " (" + day[date.getDay()] +") " + HH + ":" + MM;
-  $('.today').html(clockText);
+  var obj = new Model_Date();
+  $('.today').html(obj.clockText());
+  obj = null;
 }
 
 function View_updateDivPane(divObjArray) { // -- Section Pane を更新する --

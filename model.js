@@ -183,3 +183,62 @@ function Model_Option(callback) { // -- Model の子クラス : OPTION --
     });
   }
 }
+
+function Model_Order(callback) { // -- Model の子クラス : ORDER --
+
+  // 継承
+  Model.call(this, callback); // Model を継承
+
+  // Over Write Methods
+  this.updateObjArray = function(id) { // --- csvデータを取得して画面更新
+    var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
+
+    $.get("DB/T_ORDER.csv",function(data){
+      var divArray = $.csv(",", "", "\n")(data); 
+      var objDate = new Model_Date();
+      var divObjArray = new Array();
+      for ( i=0 ; i < divArray.length ; i++ ) {
+        if ( divArray[i][1] == objDate.orderDate() ) {
+          divObjArray.push({  'order_id' : divArray[i][0],
+                              'order_date' : divArray[i][1],
+                              'user_id'  : divArray[i][2],
+                              'bento_id'  : divArray[i][3],
+                              'selected_opt': divArray[i][4] } )
+        }
+      }
+      caller.objArray = divObjArray; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
+      caller.updateViewFunc ? caller.updateViewFunc(caller.objArray) : 0 ; // 画面更新
+    });
+  }
+  this.setNewOrder = function(obj) { // --- ORDER をarrayに格納
+    console.log(obj);
+  }
+
+}
+
+function Model_Date() { // -- 日時モデル --
+
+  this.clockText = function() { // -- 画面上部用日時表示テキストを返す
+    var date = new Date(),
+        yy = date.getYear(),  mm = date.getMonth() + 1, 
+        dd = date.getDate(),  day = ["日","月","火","水","木","金","土"],
+        HH = date.getHours(), MM = date.getMinutes();
+        ss = date.getSeconds();
+    if (yy < 2000) { yy += 1900; }
+    if (mm < 10) { mm = "0" + mm; } if (dd < 10) { dd = "0" + dd; }
+    if (HH < 10) { HH = "0" + HH; } if (MM < 10) { MM = "0" + MM; }
+    if (ss < 10) { ss = "0" + ss; } 
+    // return yy + "/" + mm + "/" + dd + " (" + day[date.getDay()] +") " + HH + ":" + MM + ":" + ss;
+    return yy + "/" + mm + "/" + dd + " (" + day[date.getDay()] +") " + HH + ":" + MM;
+  }
+
+  this.orderDate = function() { // -- 注文日付定義を返す
+    var date = new Date(),
+        yy = date.getYear(),  mm = date.getMonth() + 1, dd = date.getDate();
+    if (yy < 2000) { yy += 1900; }
+    if (mm < 10) { mm = "0" + mm; } if (dd < 10) { dd = "0" + dd; }
+    return yy + "/" + mm + "/" + dd;
+  }
+
+}
+

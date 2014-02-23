@@ -15,6 +15,8 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
   var objShopModel   = new Model_Shop(View_updateShopPane);     // shop Model オブジェクト生成
   var objMenuModel   = new Model_Menu(View_updateMenuPane);     // Menu Model オブジェクト生成
   var objOptionModel = new Model_Option(View_updateOptionPane); // Option Model オブジェクト生成
+  var objOrderModel  = new Model_Order(); // Order Model オブジェクト生成
+  var objDateModel   = new Model_Date();  // Date Model オブジェクト生成
 
   // 各種処理定義
   //
@@ -43,13 +45,23 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
     objOptionModel.updateObjArray(objMenuModel.selectedID);   // Optionボタンを表示する
   });
 
+  $(".OptionName").live("click", function() {  // -- Optionボタンを押したときの処理 --
+    objOptionModel.setSelectedID($(this).attr("id"));         // Option object に選択した物を記憶させる
+    objOrderModel.setNewOrder({ order_date: objDateModel.orderDate(),
+                                user_id:    objUserModel.selectedID,
+                                bento_id:   objMenuModel.selectedID,
+                                selected_opt: objOptionModel.selectedID });
+  });
+
   // 画面初期起動処理
   //
 
   // -- 画面初期起動処理 --
-  updateDate();                     // 日付を更新する
-  objSectionModel.updateObjArray(); // 課のデータを取得して画面更新
+  updateDate();                      // 日付を表示する(初回表示)
+  setInterval( updateDate ,20000);    // 日付の自動更新を定義
+  objSectionModel.updateObjArray();  // 課のデータを取得して画面更新
 
+  
 });
 
 // -- Tool 関数 --

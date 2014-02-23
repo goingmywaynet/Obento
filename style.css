@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 /* @font-face{*/
 /*   font-family:'APJapanesefontT';*/
 /*   src: url('APJapanesefontT.eot'); /* here you go, IE */*/
@@ -9,12 +8,61 @@
 /*   font-family:'APJapanesefontT';*/
 /*   src: url('APJapanesefontT.ttf') format("truetype"); /* everyone else take this */*/
 /* }*/
+
+/* パンくずリスト */
+.breadCrumbs {
+  width: 900px;
+  margin: 10px 0 0;
+}
+
+.breadCrumbs li {
+  list-style: none;
+  float: left;
+  line-height: 1;
+}
+
+.breadCrumbs a {
+  padding: .7em 1em .7em 1em;
+  float: left;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000;
+  /* position: relative;*/
+  background-color: #AAAFB5;
+  -pie-background: linear-gradient(#e4f1ff, #97b0f2 50%, #1727aa);
+  behavior: url(static/PIE-1/PIE.htc);
+}
+
+.breadCrumbs p {
+  margin: 0;
+  color: green;
+  font-size: xx-large;
+}
+
+.breadCrumbs li:first-child a {
+  color: red;
+}
+
+.breadCrumbs strong {
+  float: left;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin-left: 1em;
+  background: none;
+  /* border-radius: 1px;*/ /*IE8だと矢印が崩れる*/
+  border: 20px solid transparent;
+  border-left-color: blue;
+  behavior: url(static/PIE-1/PIE.htc);
+}
+
 #container {
         width: 100%;
         position: relative;
         height: 100%;
         min-height: 100%;
 }
+
 #contents {
         padding-bottom: 50px;
 }
