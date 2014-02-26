@@ -26,23 +26,27 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
     // console.log( "SectionPane Clicked " + $(this).attr("id") );
     objSectionModel.setSelectedID($(this).attr("id"));        // Model object に選択した物を記憶させる
     objUserModel.updateObjArray(objSectionModel.selectedID);  // User ペインを更新
+    View_breadCrumbs(objSectionModel); // パンくず更新
   });
   
   $(".UserName").live("click", function() {  // -- Userボタンを押したときの処理 --
     objUserModel.setSelectedID($(this).attr("id"));           // User object に選択した物を記憶させる
     // window.open("http://www.google.co.jp/search?q=" + $(this).text() + "&tbm=isch"); // ネタ
-    View_updateUserPane_UserSelected(objSectionModel,objUserModel); // 選択済み情報を表示する
+    // View_updateUserPane_UserSelected(objSectionModel,objUserModel); // 選択済み情報を表示する
     objShopModel.updateObjArray();                                  // SHOPボタンを表示する
+    View_breadCrumbs(objUserModel); // パンくず更新
   });
 
   $(".ShopName").live("click", function() {  // -- shopボタンを押したときの処理 --
     objShopModel.setSelectedID($(this).attr("id"));           // Shop object に選択した物を記憶させる
-    objMenuModel.updateObjArray(objShopModel.selectedID);                            // Menuボタンを表示する
+    objMenuModel.updateObjArray(objShopModel.selectedID);     // Menuボタンを表示する
+    View_breadCrumbs(objShopModel);                           // パンくず更新
   });
 
   $(".MenuName").live("click", function() {  // -- Menuボタンを押したときの処理 --
     objMenuModel.setSelectedID($(this).attr("id"));           // Menu object に選択した物を記憶させる
     objOptionModel.updateObjArray(objMenuModel.selectedID);   // Optionボタンを表示する
+    View_breadCrumbs(objMenuModel); // パンくず更新
   });
 
   $(".OptionName").live("click", function() {  // -- Optionボタンを押したときの処理 --
@@ -51,6 +55,44 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
                                 user_id:    objUserModel.selectedID,
                                 bento_id:   objMenuModel.selectedID,
                                 selected_opt: objOptionModel.selectedID });
+    View_breadCrumbs(objOptionModel); // パンくず更新
+  });
+
+  $(".breadCrumbs > li ").live("click", function() {  // -- パンくずボタンを押したときの処理 --
+    //Debug
+    // console.log( $(this).attr("id") );
+    switch ( $(this).attr("id") ) {
+      case "Section":
+        View_breadCrumbs();
+        objSectionModel.updateObjArray();  // 課のデータを取得して画面更新
+        break;
+      case "User":
+        View_breadCrumbs();
+        View_breadCrumbs(objSectionModel);
+        objUserModel.updateObjArray(objSectionModel.selectedID);  // User ペインを更新
+        break;
+      case "Shop":
+        View_breadCrumbs();
+        View_breadCrumbs(objSectionModel);
+        View_breadCrumbs(objUserModel);
+        objShopModel.updateObjArray();
+        break;
+      case "Menu":
+        View_breadCrumbs();
+        View_breadCrumbs(objSectionModel);
+        View_breadCrumbs(objUserModel);
+        View_breadCrumbs(objShopModel);
+        objMenuModel.updateObjArray(objShopModel.selectedID);     // Menuボタンを表示する
+        break;
+      case "Option":
+        View_breadCrumbs();
+        View_breadCrumbs(objSectionModel);
+        View_breadCrumbs(objUserModel);
+        View_breadCrumbs(objShopModel);
+        View_breadCrumbs(objMenuModel);
+        objOptionModel.updateObjArray(objMenuModel.selectedID);   // Optionボタンを表示する
+        break;
+    }
   });
 
   // 画面初期起動処理
@@ -60,7 +102,7 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
   updateDate();                      // 日付を表示する(初回表示)
   setInterval( updateDate ,20000);    // 日付の自動更新を定義
   objSectionModel.updateObjArray();  // 課のデータを取得して画面更新
-
+  View_breadCrumbs();
   
 });
 

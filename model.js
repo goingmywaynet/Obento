@@ -33,6 +33,15 @@ function Model(callback) { // -- モデルの継承用親クラス --
       if ( this.objArray[i].user_id == selectedId ) {
         this.selectedObj = this.objArray[i];
       }
+      if ( this.objArray[i].shop_id == selectedId ) {
+        this.selectedObj = this.objArray[i];
+      }
+      if ( this.objArray[i].bento_id == selectedId ) {
+        this.selectedObj = this.objArray[i];
+      }
+      if ( this.objArray[i].option_id == selectedId ) {
+        this.selectedObj = this.objArray[i];
+      }
     }
   }
 
