@@ -9,6 +9,7 @@
 /*   src: url('APJapanesefontT.ttf') format("truetype"); /* everyone else take this */*/
 /* }*/
 
+
 /* パンくずリスト */
 .breadCrumbs {
   width: 900px;
@@ -226,7 +227,7 @@
   clear: both;
 }
 
-div {font-family: "APJapanesefontT"; }
+/* div {font-family: "APJapanesefontT"; }*/
 
 #footer {
   position: absolute;
@@ -237,4 +238,14 @@ div {font-family: "APJapanesefontT"; }
   background-repeat: repeat-x;
   background-attachment: fixed;
   background-position: right bottom;
+}
+
+.OrderPane {
+  font-size: 25px;
+  padding-top: 1em;
+}
+
+
+* {
+  font-size: 20px;
 }

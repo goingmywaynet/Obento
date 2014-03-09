@@ -15,8 +15,8 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
   var objShopModel   = new Model_Shop(View_updateShopPane);     // shop Model オブジェクト生成
   var objMenuModel   = new Model_Menu(View_updateMenuPane);     // Menu Model オブジェクト生成
   var objOptionModel = new Model_Option(View_updateOptionPane); // Option Model オブジェクト生成
-  var objOrderModel  = new Model_Order(); // Order Model オブジェクト生成
-  var objDateModel   = new Model_Date();  // Date Model オブジェクト生成
+  var objOrderModel  = new Model_Order(View_updateOrderPane);   // Order Model オブジェクト生成
+  var objDateModel   = new Model_Date();                        // Date Model オブジェクト生成
 
   // 各種処理定義
   //
@@ -56,6 +56,7 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
                                 bento_id:   objMenuModel.selectedID,
                                 selected_opt: objOptionModel.selectedID });
     View_breadCrumbs(objOptionModel); // パンくず更新
+    View_updateOrderPane(objMenuModel,objOptionModel); // 注文内容表示
   });
 
   $(".breadCrumbs > li ").live("click", function() {  // -- パンくずボタンを押したときの処理 --
@@ -100,9 +101,9 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
 
   // -- 画面初期起動処理 --
   updateDate();                      // 日付を表示する(初回表示)
-  setInterval( updateDate ,20000);    // 日付の自動更新を定義
+  setInterval( updateDate ,20000);   // 日付の自動更新を定義
   objSectionModel.updateObjArray();  // 課のデータを取得して画面更新
-  View_breadCrumbs();
+  View_breadCrumbs();                // パンくずリスト初期化
   
 });
 

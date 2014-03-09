@@ -64,6 +64,14 @@ function View_updateOptionPane(divObjArray) { // -- Option Pane を更新する 
   }
 }
 
+function View_updateOrderPane(objMenuModel, objOptionModel) { // -- Order Pane を更新する --
+  $(".SectionPane").empty(); $(".UserPane").empty();
+  $(".ShopPane").empty(); $(".MenuPane").empty();
+  $(".OptionPane").empty();
+  $(".OrderPane").append(
+      objMenuModel.selectedObj.bento_name + objOptionModel.selectedObj.option_name + "</br>");
+}
+
 function View_breadCrumbs(obj) { // -- パンくず表示処理
   if (!obj) {
     $(".breadCrumbs").empty();

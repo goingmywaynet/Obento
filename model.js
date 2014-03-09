@@ -166,7 +166,7 @@ function Model_Option(callback) { // -- Model の子クラス : OPTION --
       var divArray = $.csv(",", "", "\n")(data); 
       var divObjArray = new Array();
       for ( i=0 ; i < divArray.length ; i++ ) {
-        if ( divArray[i][1] == id ) {
+        if ( divArray[i][0] == id ) {
           divObjArray.push({  'bento_id' : divArray[i][0],
                               'option_group' : divArray[i][1] } )
         }
@@ -220,6 +220,8 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
     });
   }
   this.setNewOrder = function(obj) { // --- ORDER をarrayに格納
+    this.selectedObj = obj;
+    // this.updateViewFunc ? this.updateViewFunc(obj) : 0 ; // 画面更新
     console.log(obj);
   }
 
