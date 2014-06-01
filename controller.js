@@ -55,8 +55,17 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
                                 user_id:    objUserModel.selectedID,
                                 bento_id:   objMenuModel.selectedID,
                                 selected_opt: objOptionModel.selectedID });
+    // Debug
+    // console.log( "order_date:" + objDateModel.orderDate() +
+    //                             "user_id:" +   objUserModel.selectedID +
+    //                             "bento_id:" +  objMenuModel.selectedID +
+    //                             "selected_opt:" + objOptionModel.selectedID );
+
     View_breadCrumbs(objOptionModel); // パンくず更新
     View_updateOrderPane(objMenuModel,objOptionModel); // 注文内容表示
+
+    // objOrderModel.updateObjArray();
+
   });
 
   $(".breadCrumbs > li ").live("click", function() {  // -- パンくずボタンを押したときの処理 --

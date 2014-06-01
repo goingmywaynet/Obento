@@ -199,30 +199,39 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
   Model.call(this, callback); // Model を継承
 
   // Over Write Methods
-  this.updateObjArray = function(id) { // --- csvデータを取得して画面更新
+  this.updateObjArray = function(id) { // --- csvデータを取得
     var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
-
-    $.get("DB/T_ORDER.csv",function(data){
-      var divArray = $.csv(",", "", "\n")(data); 
-      var objDate = new Model_Date();
-      var divObjArray = new Array();
-      for ( i=0 ; i < divArray.length ; i++ ) {
-        if ( divArray[i][1] == objDate.orderDate() ) {
-          divObjArray.push({  'order_id' : divArray[i][0],
-                              'order_date' : divArray[i][1],
-                              'user_id'  : divArray[i][2],
-                              'bento_id'  : divArray[i][3],
-                              'selected_opt': divArray[i][4] } )
-        }
-      }
-      caller.objArray = divObjArray; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
-      caller.updateViewFunc ? caller.updateViewFunc(caller.objArray) : 0 ; // 画面更新
+    // XML-RPCサーバよりオーダ内容を全件取得
+    $.xmlrpc({
+      url: xmlrpcURL,
+      methodName: 'T_ORDER-SELECT-ALL',
+      // params: obj,
+      success: function(response, status, jqXHR) {
+        caller.objArray = response; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
+        caller.updateViewFunc ? caller.updateViewFunc(caller.objArray) : 0 ; // 画面更新
+        // Debug
+        // console.log(caller.objArray);
+      },
+      error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
     });
   }
+
   this.setNewOrder = function(obj) { // --- ORDER をarrayに格納
     this.selectedObj = obj;
-    // this.updateViewFunc ? this.updateViewFunc(obj) : 0 ; // 画面更新
-    console.log(obj);
+
+    // Debug
+    // console.log(obj);
+    
+    // XML-RPCサーバへ送信
+    $.xmlrpc({
+      // url: 'http://localhost:8000/RPC2',
+      url: xmlrpcURL,
+      methodName: 'T_ORDER-INSERT',
+      params: obj,
+      success: function(response, status, jqXHR) { },
+      error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
+    });
+
   }
 
 }
