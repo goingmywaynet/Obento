@@ -18,6 +18,22 @@ import sqlite3
 class RequestHandler(SimpleXMLRPCRequestHandler):
     rpc_paths = ('/RPC2',)
 
+    # CORS Support
+    # http://stackoverflow.com/questions/3248320/xml-rpc-javascript-unsupported-method-options
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.end_headers()
+
+    # CORS Support
+    # http://stackoverflow.com/questions/3248320/xml-rpc-javascript-unsupported-method-options
+    # Add these headers to all responses
+    def end_headers(self):
+        self.send_header("Access-Control-Allow-Headers", 
+                         "Origin, X-Requested-With, Content-Type, Accept")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        SimpleXMLRPCRequestHandler.end_headers(self)
+
+
 # Create server
 server = SimpleXMLRPCServer(("localhost", 8000),
                             requestHandler=RequestHandler)
