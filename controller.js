@@ -51,18 +51,32 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
 
   $(".OptionName").live("click", function() {  // -- Optionボタンを押したときの処理 --
     objOptionModel.setSelectedID($(this).attr("id"));         // Option object に選択した物を記憶させる
-    objOrderModel.setNewOrder({ order_date: objDateModel.orderDate(),
-                                user_id:    objUserModel.selectedID,
-                                bento_id:   objMenuModel.selectedID,
-                                selected_opt: objOptionModel.selectedID });
-    // Debug
-    // console.log( "order_date:" + objDateModel.orderDate() +
-    //                             "user_id:" +   objUserModel.selectedID +
-    //                             "bento_id:" +  objMenuModel.selectedID +
-    //                             "selected_opt:" + objOptionModel.selectedID );
-
     View_breadCrumbs(objOptionModel); // パンくず更新
-    View_updateOrderPane(objMenuModel,objOptionModel); // 注文内容表示
+    
+    if ( objOptionModel.selectedIDs.length < objOptionModel.optionCounts ) { // -- 選択数に達してない場合
+      objOptionModel.updateViewFunc(objOptionModel.objArray, objOptionModel.selectedIDs); // 画面更新
+    } else { // -- 選択数に達した場合
+      objOptionModel.updateViewFunc(objOptionModel.objArray, objOptionModel.selectedIDs); // 画面更新
+
+      View_updateOrderPane(objMenuModel,objOptionModel); // 注文内容表示
+
+      // Debug
+      // console.log(objOptionModel.selectedIDs);
+      // console.log(objOptionModel.selectedIDs.length);
+
+      // objOrderModel.setNewOrder({ order_date: objDateModel.orderDate(),
+      //                             user_id:    objUserModel.selectedID,
+      //                             bento_id:   objMenuModel.selectedID,
+      //                             selected_opt: objOptionModel.selectedID });
+      
+      // Debug
+      // console.log( "order_date:" + objDateModel.orderDate() +
+      //                             "user_id:" +   objUserModel.selectedID +
+      //                             "bento_id:" +  objMenuModel.selectedID +
+      //                             "selected_opt:" + objOptionModel.selectedID );
+
+     console.log(objOptionModel.selectedObjs);
+    }
 
     // objOrderModel.updateObjArray();
 

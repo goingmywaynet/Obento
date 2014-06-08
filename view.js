@@ -12,7 +12,7 @@ function View_updateDivPane(divObjArray) { // -- Section Pane を更新する --
   $(".OptionPane").empty();
   for ( i=0 ; i < divObjArray.length ; i++ ) {
     $('.SectionPane').append(
-     "<DIV id=\"" + divObjArray[i].ID + "\">" + divObjArray[i].name + "</div>" );
+     "<DIV id=\"" + divObjArray[i].id + "\">" + divObjArray[i].name + "</div>" );
   }
 }
 
@@ -54,7 +54,7 @@ function View_updateMenuPane(divObjArray) { // -- Menu Pane を更新する --
   }
 }
 
-function View_updateOptionPane(divObjArray) { // -- Option Pane を更新する --
+function View_updateOptionPane(divObjArray,selectedIDs) { // -- Option Pane を更新する --
   $(".SectionPane").empty(); $(".UserPane").empty();
   $(".ShopPane").empty(); $(".MenuPane").empty();
   $(".OptionPane").empty();
@@ -62,6 +62,15 @@ function View_updateOptionPane(divObjArray) { // -- Option Pane を更新する 
     $('.OptionPane').append(
      "<DIV class=\"OptionName Button\" id=\"" + divObjArray[i].option_id + "\">" + divObjArray[i].option_name + "</div>" );
   }
+
+  if (selectedIDs.length != 0) { // -- 複数選択の場合は、選択済みのoptionを反転させる
+    //Debug
+    // console.log(divObjArray + selectedIDs);
+    for ( i=0 ; i < selectedIDs.length ; i++ ) {
+      $('.OptionPane > #' + selectedIDs[i]).css("background-color","red");
+    }
+  }
+
 }
 
 function View_updateOrderPane(objMenuModel, objOptionModel) { // -- Order Pane を更新する --
@@ -85,7 +94,7 @@ function View_breadCrumbs(obj) { // -- パンくず表示処理
         "<li id=\"Section\"><a href=\"#\">" + obj.selectedObj.name 
         + "</a><strong></strong></li>" );
     $(".breadCrumbs").append(
-        "<li><p>" + "氏名を選択してください" + "</p></li>" );
+        "<li><p>" + "氏名を選択" + "</p></li>" );
   }
 
   if (obj instanceof Model_User) {
@@ -94,7 +103,7 @@ function View_breadCrumbs(obj) { // -- パンくず表示処理
         "<li id=\"User\"><a href=\"#\">" + obj.selectedObj.user_name 
         + "</a><strong></strong></li>" );
     $(".breadCrumbs").append(
-        "<li><p>" + "店名を選択してください" + "</p></li>" );
+        "<li><p>" + "店名を選択" + "</p></li>" );
   }
 
   if (obj instanceof Model_Shop) {
@@ -103,7 +112,7 @@ function View_breadCrumbs(obj) { // -- パンくず表示処理
         "<li id=\"Shop\"><a href=\"#\">" + obj.selectedObj.shop_name 
         + "</a><strong></strong></li>" );
     $(".breadCrumbs").append(
-        "<li><p>" + "メニューを選択してください" + "</p></li>" );
+        "<li><p>" + "メニューを選択" + "</p></li>" );
   }
 
   if (obj instanceof Model_Menu) {
@@ -112,7 +121,7 @@ function View_breadCrumbs(obj) { // -- パンくず表示処理
         "<li id=\"Menu\"><a href=\"#\">" + obj.selectedObj.bento_name 
         + "</a><strong></strong></li>" );
     $(".breadCrumbs").append(
-        "<li><p>" + "オプションを選択してください" + "</p></li>" );
+        "<li><p>" + "オプションを選択</p></li>" );
   }
 
 }
