@@ -2,6 +2,7 @@
 //
 $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Controller) --
 
+  //
   // オブジェクト生成
   //
 
@@ -10,7 +11,6 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
   var objSectionModel = new Model_Section();              // 定義したclass Model_Section を元にインスタンスを生成
   objSectionModel.setUpdateView(View_updateDivPane);      // 画面更新のためのview関数をjQueryのコールバック関数として指定
   // objSectionModel.updateViewFunc=View_updateDivPane;   // という書き方もok
-  //
   var objUserModel   = new Model_User(View_updateUserPane);     // user Model オブジェクト生成
   var objShopModel   = new Model_Shop(View_updateShopPane);     // shop Model オブジェクト生成
   var objMenuModel   = new Model_Menu(View_updateMenuPane);     // Menu Model オブジェクト生成
@@ -18,6 +18,7 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
   var objOrderModel  = new Model_Order(View_updateOrderPane);   // Order Model オブジェクト生成
   var objDateModel   = new Model_Date();                        // Date Model オブジェクト生成
 
+  //
   // 各種処理定義
   //
  
@@ -82,6 +83,12 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
 
   });
 
+  $(".orderSubmit").live("click", function() {  // -- 注文ボタンを押したときの処理 --
+    objMenuModel.setSelectedID($(this).attr("id"));           // Menu object に選択した物を記憶させる
+    objOptionModel.updateObjArray(objMenuModel.selectedID);   // Optionボタンを表示する
+    View_breadCrumbs(objMenuModel); // パンくず更新
+  });
+
   $(".breadCrumbs > li ").live("click", function() {  // -- パンくずボタンを押したときの処理 --
     //Debug
     // console.log( $(this).attr("id") );
@@ -119,6 +126,7 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
     }
   });
 
+  //
   // 画面初期起動処理
   //
 

@@ -3,8 +3,7 @@ INSERT INTO M_section (id, name) VALUES ('1', 'スマイル課');
 INSERT INTO M_section (id, name) VALUES ('2', 'どきどき課');
 INSERT INTO M_section (id, name) VALUES ('3', 'ハピネス課');
 
-
--- 利用者マスタ
+-- ユーザ名マスタ
 INSERT INTO M_user (id, section_id, name, enable_flag) VALUES ('1', '1', ' 星空 みゆき', '1');
 INSERT INTO M_user (id, section_id, name, enable_flag) VALUES ('2', '1', ' 日野 あかね', '1');
 INSERT INTO M_user (id, section_id, name, enable_flag) VALUES ('3', '1', ' 黄瀬 やよい', '1');
@@ -18,16 +17,14 @@ INSERT INTO M_user (id, section_id, name, enable_flag) VALUES ('10', '2', ' 円 
 INSERT INTO M_user (id, section_id, name, enable_flag) VALUES ('11', '3', ' 愛乃 めぐみ', '1');
 INSERT INTO M_user (id, section_id, name, enable_flag) VALUES ('12', '3', ' 白雪 ひめ', '1');
 
-
 -- 店マスタ
-INSERT INTO M_shop (id, name) VALUES ('1', '本店食堂');
-INSERT INTO M_shop (id, name) VALUES ('2', 'どん丼亭');
-INSERT INTO M_shop (id, name) VALUES ('3', '四季菜');
-INSERT INTO M_shop (id, name) VALUES ('4', 'あちこーこー屋');
-INSERT INTO M_shop (id, name) VALUES ('5', 'ポケットマーニー');
+INSERT INTO M_shop (id, name, enable_flag) VALUES ('1', '本店食堂','1');
+INSERT INTO M_shop (id, name, enable_flag) VALUES ('2', 'どん丼亭','1');
+INSERT INTO M_shop (id, name, enable_flag) VALUES ('3', '四季菜','1');
+INSERT INTO M_shop (id, name, enable_flag) VALUES ('4', 'あちこーこー屋','1');
+INSERT INTO M_shop (id, name, enable_flag) VALUES ('5', 'ポケットマーニー','1');
 
-
--- 弁当マスタ
+-- 弁当メニューマスタ
 INSERT INTO M_menu ( shop_id, name, price, enable_flag) VALUES ( '1', '日替わり（小）', '200', '1');
 INSERT INTO M_menu ( shop_id, name, price, enable_flag) VALUES ( '1', '日替わり（中）', '350', '1');
 INSERT INTO M_menu ( shop_id, name, price, enable_flag) VALUES ( '1', '日替わり（大）', '400', '1');
@@ -71,7 +68,6 @@ INSERT INTO M_option (group_id, name) VALUES ('3', 'テリマヨチキン');
 INSERT INTO M_option (group_id, name) VALUES ('3', 'ソースカツマヨ');
 INSERT INTO M_option (group_id, name) VALUES ('3', 'ピリ辛チキン');
 INSERT INTO M_option (group_id, name) VALUES ('3', 'オクラ丼');
-
 
 -- 弁当オプション関連
 INSERT INTO M_option_group (menu_id, group_id, option_count) VALUES ('13', '1', '1');

@@ -61,7 +61,7 @@ server.register_introspection_functions()
 # Server側処理実装
 #
 
-mydb = 'ObentoDB2.db'
+mydb = '../DB/ObentoDB.db'
 
 # M_section 取得
 def SelectM_section():

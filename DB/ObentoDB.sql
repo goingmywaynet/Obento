@@ -1,92 +1,93 @@
 
 /* Drop Tables */
 
-DROP TABLE T_ORDER;
-DROP TABLE M_USER;
-DROP TABLE M_SECTION;
-DROP TABLE M_OPTION;
-DROP TABLE M_BENTO_OPT;
-DROP TABLE M_BENTO;
-DROP TABLE M_SHOP;
-
-
-
+DROP TABLE IF EXISTS T_order;
+DROP TABLE IF EXISTS T_order_option;
+DROP TABLE IF EXISTS M_option_group;
+DROP TABLE IF EXISTS M_option;
+DROP TABLE IF EXISTS M_section;
+DROP TABLE IF EXISTS M_user;
+DROP TABLE IF EXISTS M_menu;
+DROP TABLE IF EXISTS M_shop;
 
 /* Create Tables */
 
-CREATE TABLE M_SECTION
+CREATE TABLE M_section
 (
-	section_id integer NOT NULL UNIQUE,
-	section_name text,
-	PRIMARY KEY (section_id)
+	id integer NOT NULL UNIQUE,
+	name text,
+	PRIMARY KEY (id)
 );
 
-
-CREATE TABLE M_OPTION
+CREATE TABLE M_shop
 (
-	option_id integer NOT NULL UNIQUE,
-	option_group integer NOT NULL,
-	option_name text,
-	PRIMARY KEY (option_id)
+	id integer NOT NULL UNIQUE,
+	name text NOT NULL,
+  enable_flag integer(1) NOT NULL DEFAULT 1,
+	PRIMARY KEY (id)
 );
 
-
-CREATE TABLE M_SHOP
+CREATE TABLE M_user
 (
-	shop_id integer NOT NULL UNIQUE,
-	shop_name text,
-	PRIMARY KEY (shop_id)
-);
-
-
-CREATE TABLE M_USER
-(
-	user_id integer NOT NULL UNIQUE,
+	id integer NOT NULL UNIQUE,
 	section_id integer NOT NULL,
-	user_name text,
-	enable_flag integer DEFAULT 1,
-	PRIMARY KEY (user_id),
+	name text NOT NULL,
+	enable_flag integer(1) DEFAULT 1 NOT NULL,
+	PRIMARY KEY (id),
 	FOREIGN KEY (section_id)
-	REFERENCES M_SECTION (section_id)
+	REFERENCES M_section (id)
 );
 
-
-CREATE TABLE M_BENTO
+CREATE TABLE M_menu
 (
-	bento_id integer NOT NULL UNIQUE,
+	id integer NOT NULL UNIQUE,
 	shop_id integer NOT NULL,
-	bento_name text,
+	name text,
 	price integer,
 	enable_flag integer DEFAULT 1,
-	PRIMARY KEY (bento_id),
+	PRIMARY KEY (id),
 	FOREIGN KEY (shop_id)
 	REFERENCES M_SHOP (shop_id)
 );
 
-
-CREATE TABLE M_BENTO_OPT
+CREATE TABLE M_option_group
 (
-	bento_id integer NOT NULL,
-	option_group integer,
-	FOREIGN KEY (bento_id)
-	REFERENCES M_BENTO (bento_id),
-	UNIQUE (bento_id, option_group)
+	menu_id integer NOT NULL,
+	group_id integer,
+  option_count integer,
+	FOREIGN KEY (menu_id)
+	REFERENCES M_menu (id),
+	UNIQUE (menu_id, group_id)
 );
 
-
-CREATE TABLE T_ORDER
+CREATE TABLE M_option
 (
-	order_id integer NOT NULL UNIQUE,
-	order_date text,
+	id integer NOT NULL UNIQUE,
+	group_id integer NOT NULL,
+	name text,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE T_order
+(
+	id integer PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE  ,
+	order_date text NOT NULL,
 	user_id integer NOT NULL,
-	bento_id integer NOT NULL,
-	selected_opt text,
-	PRIMARY KEY (order_id),
+	menu_id integer NOT NULL,
+	payment integer,
 	FOREIGN KEY (user_id)
 	REFERENCES M_USER (user_id),
-	FOREIGN KEY (bento_id)
-	REFERENCES M_BENTO (bento_id)
+	FOREIGN KEY (menu_id)
+	REFERENCES M_menu (id)
 );
 
-
+CREATE TABLE T_order_option
+(
+  order_id integer NOT NULL,
+  option_id integer NOT NULL,
+	FOREIGN KEY (order_id)
+	REFERENCES T_order (id),
+	FOREIGN KEY (option_id)
+	REFERENCES M_option (id)
+);
 

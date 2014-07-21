@@ -73,12 +73,21 @@ function View_updateOptionPane(divObjArray,selectedIDs) { // -- Option Pane を�
 
 }
 
-function View_updateOrderPane(objMenuModel, objOptionModel) { // -- Order Pane を更新する --
-  $(".SectionPane").empty(); $(".UserPane").empty();
+function View_updateOrderPane(objMenuModel, objOptionModel) { // -- Order Pane 更新 (注文する商品を表示) --
+  // 各PaneをClear
+  $(".SectionPane").empty(); $(".UserPane").empty(); 
   $(".ShopPane").empty(); $(".MenuPane").empty();
   $(".OptionPane").empty();
+  // OrderPane に注文内容を表示する
   $(".OrderPane").append(
-      objMenuModel.selectedObj.bento_name + objOptionModel.selectedObj.option_name + "</br>");
+      "ご注文は " 
+      + objMenuModel.selectedObj.bento_name 
+      + objOptionModel.selectedObj.option_name 
+      + " " 
+      + objMenuModel.selectedObj.price 
+      + "円 ");
+  // 注文ボタン表示
+  $(".OrderPane").append( "<DIV class=\"Button\" id=\"orderSubmit\">" + "注文" + "</div>" );
 }
 
 function View_breadCrumbs(obj) { // -- パンくず表示処理

@@ -147,7 +147,7 @@ function Model_Menu(callback) { // -- Model の子クラス : MENU --
   Model.call(this, callback); // Model を継承
 
   // Over Write Methods
-  this.updateObjArray = function(id) { // --- csvデータを取得して画面
+  this.updateObjArray = function(id) { // --- データを取得して画面
     var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
     // XML-RPC サーバとの通信によって、一覧を取得する
     $.xmlrpc({
