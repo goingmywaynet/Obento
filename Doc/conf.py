@@ -262,14 +262,16 @@ texinfo_documents = [
 
 ################################ My Settings ##################################
 # Enabled extensions
-extensions = ['sphinxjp.themecore']
+extensions += ['sphinxjp.themecore']
 extensions += ['sphinxcontrib.blockdiag']
-html_theme = 'sphinxjp'
+html_theme = 'sphinxdoc'
 
 # Fontpath for blockdiag (truetype font)
 # for Mac OS X
 blockdiag_fontpath = '/Library/Fonts/HiraginoKG_W3.otf'
 # for CentOS
 # blockdiag_fontpath = '/usr/share/fonts/japanese/TrueType/sazanami-gothic.ttf'
+
+todo_include_todos = True
 
 

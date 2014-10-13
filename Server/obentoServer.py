@@ -97,7 +97,7 @@ def SelectM_user(flag):
     cursor = db.execute(sql,(flag,))
     res = cursor.fetchall()
     db.close()
-    debugFunc([sql,res])
+    debugFunc([sql,flag,res])
     return res
 server.register_function(SelectM_user,'getM_user_FLAG')
 
@@ -108,7 +108,7 @@ def SelectM_shop(flag):
     cursor = db.execute(sql,(flag,))
     res = cursor.fetchall()
     db.close()
-    debugFunc([sql,res])
+    debugFunc([sql,flag,res])
     return res
 server.register_function(SelectM_shop,'getM_shop_FLAG')
 
@@ -119,7 +119,7 @@ def SelectM_menu(shop_id,flag):
     cursor = db.execute(sql,(shop_id,flag) )
     res = cursor.fetchall()
     db.close()
-    debugFunc([sql,res])
+    debugFunc([sql,shop_id,flag,res])
     return res
 server.register_function(SelectM_menu,'getM_menu_SHOP_FLAG')
 
@@ -134,7 +134,7 @@ def SelectM_option_group(menu_id):
     else:
         res = [(0,0)]
     db.close()
-    debugFunc([sql,res,r,len(r)])
+    debugFunc([sql,menu_id,res,r,len(r)])
     return res
 server.register_function(SelectM_option_group,'getM_option_group_MENU')
 
@@ -145,7 +145,7 @@ def SelectM_option_GROUP(group_id):
     cursor = db.execute(sql,(group_id,))
     res = cursor.fetchall()
     db.close()
-    debugFunc([sql,res])
+    debugFunc([sql,group_id,res])
     return res
 server.register_function(SelectM_option_GROUP,'getM_option_GROUP')
 
@@ -157,7 +157,7 @@ def SelectM_option_MENU(menu_id):
     #menu_idが2桁以上の場合 (menu_id) だと、2件とカウントされしまうので注意
     res = cursor.fetchall()
     db.close()
-    debugFunc([sql,res])
+    debugFunc([sql,menu_id,res])
     return res
 server.register_function(SelectM_option_MENU,'getM_option_MENU')
 
@@ -167,7 +167,7 @@ def InsertT_ORDER(order_date,user_id,menu_id,payment):
     sql = u"INSERT INTO T_ORDER (order_date, user_id, menu_id, payment) VALUES (?, ?, ?, ?)"
     db.execute(sql, (order_date,user_id,menu_id,payment))
     db.close()
-    debugFunc([sql, (order_date,user_id,menu_id,payment)])
+    debugFunc([sql,order_date,user_id,menu_id,payment])
     return 1
 server.register_function(InsertT_ORDER,'T_ORDER-INSERT')
 
@@ -175,16 +175,16 @@ server.register_function(InsertT_ORDER,'T_ORDER-INSERT')
 def InsertT_order_option(order_id,option_id):
     db = sqlite3.connect(mydb, isolation_level=None)
     sql = u"INSERT INTO T_ORDER (order_date, user_id, menu_id, payment) VALUES (?, ?, ?, ?)"
-    db.execute(sql, (order_date,user_id,menu_id,payment))
+    db.execute(sql,order_date,user_id,menu_id,payment)
     db.close()
-    debugFunc([sql, (order_date,user_id,menu_id,payment)])
+    debugFunc([sql,order_date,user_id,menu_id,payment])
     return 1
 server.register_function(InsertT_ORDER,'T_ORDER-INSERT')
 
 # T_ORDER への SELECT ALL
 def SelectT_ORDER():
     db = sqlite3.connect(mydb, isolation_level=None)
-    sql = u"SELECT order_id,order_date, user_id, bento_id, selected_opt FROM T_ORDER"
+    sql = u"SELECT id,order_date, user_id, menu_id, payment FROM T_ORDER"
     cursor = db.execute(sql)
     # Debug
     # print cursor

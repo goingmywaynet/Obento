@@ -145,7 +145,7 @@ M_option / オプション管理マスタ
 M_option_group / オプショングループ管理マスタ
 -------------------------------------------------
 
-.. csv-table:: オーダ保存テーブル
+.. csv-table:: オプショングループ管理テーブル
   :header: "primary", "Auto Increment", "Field Name", "Data Type", "Size", "Allow Null", "Unique", "Default", "Description", "Relation"
   :widths: 10, 10, 20, 10, 5, 10, 5, 10, 30, 20
 
@@ -171,10 +171,11 @@ T_order / オーダ保存テーブル
   :widths: 10, 10, 20, 10, 5, 10, 5, 10, 30, 20
 
   "x","x","id",        "integer","","", "x","",    "オーダーID",    ""
-  "", "", "order_date","text",   "","x","", "NULL","注文日時",      ""
+  "", "", "order_date","text (datetime YYYY-MM-DD HH:MM:SS)",   "","x","", "NULL","注文日時",      ""
   "", "", "user_id",   "integer","","x","", "NULL","注文者ID",      "M_user.id"
   "", "", "menu_id",   "integer","","x","", "NULL","注文メニューID","M_menu.id"
   "", "", "payment",   "integer","","x","", "NULL","支払い金額",    ""
+  "", "", "comment",   "text","","x","", "NULL","注文コメント",    ""
 
 .. code-block:: sql
 
@@ -184,6 +185,7 @@ T_order / オーダ保存テーブル
     user_id integer,
     menu_id integer,
     payment integer,
+    comment text,
     FOREIGN KEY (user_id) REFERENCES M_user (user_id),
     FOREIGN KEY (menu_id) REFERENCES M_menu (id)
   );
@@ -191,12 +193,14 @@ T_order / オーダ保存テーブル
 T_order_option / オプションオーダ保存テーブル
 -------------------------------------------------
 
-.. csv-table:: オーダ保存テーブル
+オプションを選択した場合に使用するテーブル。複数のオプションを選択した場合は同一 order_id が複数行作られる。
+
+.. csv-table:: オーダ保存テーブル(オプション選択)
   :header: "primary", "Auto Increment", "Field Name", "Data Type", "Size", "Allow Null", "Unique", "Default", "Description", "Relation"
   :widths: 10, 10, 20, 10, 5, 10, 5, 10, 30, 20
 
   "", "", "order_id",  "integer","","", "x","",    "オーダーID",    "T_order.id"
-  "", "", "option_id", "text",   "","x","", "NULL","注文日時",      "M_option.id"
+  "", "", "option_id", "text",   "","x","", "NULL","オプションIDs",      "M_option.id"
 
 .. code-block:: sql
 
@@ -204,6 +208,5 @@ T_order_option / オプションオーダ保存テーブル
     order_id integer,
     option_id integer,
     FOREIGN KEY (order_id) REFERENCES T_order (id),
-    FOREIGN KEY (option_id) REFERENCES M_option (id)
   );
 

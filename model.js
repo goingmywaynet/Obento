@@ -207,6 +207,7 @@ function Model_Option(callback) { // -- Model の子クラス : OPTION --
 
     }
 
+    // ToDo ここおかしい
     if ( this.selectedIDs.length == this.optionCounts ) { // -- 選択数に達した場合
       var selectedName = new Array();
       for ( i=0 ; i < this.selectedObjs.length ; i++ ) { // 選択済み option_name を配列へpush
@@ -272,8 +273,11 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
   // 継承
   Model.call(this, callback); // Model を継承
 
+  // 独自のプロパティ
+  this.PaymentTotal = new Number();    // 選択可能なオプション数
+
   // Over Write Methods
-  this.updateObjArray = function(id) { // --- csvデータを取得
+  this.updateObjArray = function(id) { // --- データを取得
     var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
     // XML-RPCサーバよりオーダ内容を全件取得
     $.xmlrpc({
@@ -284,7 +288,7 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
         caller.objArray = response; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
         caller.updateViewFunc ? caller.updateViewFunc(caller.objArray) : 0 ; // 画面更新
         // Debug
-        // console.log(caller.objArray);
+        console.log(caller.objArray);
       },
       error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
     });

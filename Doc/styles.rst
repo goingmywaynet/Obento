@@ -9,16 +9,9 @@ Class
 
   選択可能なボタンの基本的なスタイル定義
 
-IDs
-====================================
-
 .. envvar:: today
 
   日時表示位置DIV
-
-.. envvar:: orderSubmit
-  
-  注文実行ボタン
 
 .. envvar:: SectionPane
 
@@ -39,4 +32,12 @@ IDs
 .. envvar:: OptionPane
 
   弁当オプション名選択表示DIV
+
+IDs
+====================================
+
+.. envvar:: orderSubmit
+  
+  注文実行ボタン
+
 

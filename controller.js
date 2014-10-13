@@ -60,6 +60,7 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
       objOptionModel.updateViewFunc(objOptionModel.objArray, objOptionModel.selectedIDs); // 画面更新
 
       View_updateOrderPane(objMenuModel,objOptionModel); // 注文内容表示
+      // ToDo : orderModel に内容を渡すこと
 
       // Debug
       // console.log(objOptionModel.selectedIDs);
@@ -83,10 +84,19 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
 
   });
 
-  $(".orderSubmit").live("click", function() {  // -- 注文ボタンを押したときの処理 --
-    objMenuModel.setSelectedID($(this).attr("id"));           // Menu object に選択した物を記憶させる
-    objOptionModel.updateObjArray(objMenuModel.selectedID);   // Optionボタンを表示する
-    View_breadCrumbs(objMenuModel); // パンくず更新
+  $(".Payment").live("click", function() { // -- 入金ボタンを押した時の処理 --
+      objOrderModel.PaymentTotal += Number($(this).attr("id"));         // objOrderModel の支払い金額を上乗せ
+      $(".OrderPane > .PaymentTotal").text(objOrderModel.PaymentTotal); // 支払い金額表示
+        // Debug
+        // console.log( objOrderModel.PaymentTotal );
+
+  });
+
+  $("#orderSubmit").live("click", function() {  // -- 注文ボタンを押したときの処理 --
+    // objOrderModel.updateObjArray();
+    // objMenuModel.setSelectedID($(this).attr("id"));           // Menu object に選択した物を記憶させる
+    // objOptionModel.updateObjArray(objMenuModel.selectedID);   // Optionボタンを表示する
+    // View_breadCrumbs(objMenuModel); // パンくず更新
   });
 
   $(".breadCrumbs > li ").live("click", function() {  // -- パンくずボタンを押したときの処理 --
@@ -131,8 +141,8 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
   //
 
   // -- 画面初期起動処理 --
-  updateDate();                      // 日付を表示する(初回表示)
-  setInterval( updateDate ,20000);   // 日付の自動更新を定義
+  View_updateDate();                      // 日付を表示する(初回表示)
+  setInterval( View_updateDate ,20000);   // 日付の自動更新を定義
   objSectionModel.updateObjArray();  // 課のデータを取得して画面更新
   View_breadCrumbs();                // パンくずリスト初期化
   

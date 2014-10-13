@@ -75,6 +75,7 @@ CREATE TABLE T_order
 	user_id integer NOT NULL,
 	menu_id integer NOT NULL,
 	payment integer,
+  comment text,
 	FOREIGN KEY (user_id)
 	REFERENCES M_USER (user_id),
 	FOREIGN KEY (menu_id)
