@@ -73,6 +73,7 @@ CREATE TABLE T_order
 	id integer PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE  ,
 	order_date text NOT NULL,
 	user_id integer NOT NULL,
+  shop_id integer NOT NULL,
 	menu_id integer NOT NULL,
 	payment integer,
   comment text,

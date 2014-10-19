@@ -232,7 +232,7 @@ function Model_Option(callback) { // -- Model の子クラス : OPTION --
       success: function(response, status, jqXHR) {
         caller.optionCounts = response[0][0][1];
         // Debug
-        //console.log(caller.optionCounts);
+        // console.log(caller.optionCounts);
         
         if (caller.optionCounts > 0) { //-- オプションが選択可能なら、オプション一覧を取得 --
 
@@ -274,39 +274,77 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
   Model.call(this, callback); // Model を継承
 
   // 独自のプロパティ
-  this.PaymentTotal = new Number();    // 選択可能なオプション数
+  this.OrderDate    = new String("");  // 注文日時
+  this.UserId       = new Number();    // ユーザID
+  this.ShopId       = new Number();    // 店舗ID
+  this.MenuId       = new Number();    // 注文メニューID
+  this.OptionIds    = new Array();     // 選択済みオプション
+  this.PaymentTotal = new Number();    // 入金金額
+  this.OrderComment = new String("");  // 入力コメント
+  this.OrderId      = new Number();    // 注文ID
 
   // Over Write Methods
-  this.updateObjArray = function(id) { // --- データを取得
+  this.updateObjArray = function() { // --- 注文データを取得
     var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
-    // XML-RPCサーバよりオーダ内容を全件取得
-    $.xmlrpc({
-      url: xmlrpcURL,
-      methodName: 'T_ORDER-SELECT-ALL',
-      // params: obj,
-      success: function(response, status, jqXHR) {
-        caller.objArray = response; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
-        caller.updateViewFunc ? caller.updateViewFunc(caller.objArray) : 0 ; // 画面更新
-        // Debug
-        console.log(caller.objArray);
-      },
-      error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
-    });
+    // XML-RPCサーバよりオーダ内容を取得
+    if (caller.OrderId != "") {
+      $.xmlrpc({
+        url: xmlrpcURL,
+        methodName: 'T_ORDER-SELECT',
+        params: [caller.OrderId],
+        success: function(response, status, jqXHR) {
+          caller.objArray = response; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
+          // caller.updateViewFunc ? caller.updateViewFunc(caller.objArray) : 0 ; // 画面更新
+          // Debug
+          console.log(caller.objArray);
+        },
+        error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
+      });
+    }
   }
 
-  this.setNewOrder = function(obj) { // --- ORDER をarrayに格納
-    this.selectedObj = obj;
+  this.submitOrder = function() { // --- ORDER を 登録する
+    var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
 
-    // Debug
-    // console.log(obj);
+    // var myParam = [ "'" + this.OrderDate + "'" , this.UserId,this.ShopId,this.MenuId,this.PaymentTotal,this.OrderComment];
+    var myParam = [ this.OrderDate, this.UserId, this.ShopId, this.MenuId, this.PaymentTotal, this.OrderComment];
     
-    // XML-RPCサーバへ送信
+    // Debug
+    // console.log( "params:" + myParam ); 
+
+    // XML-RPCサーバへ送信 
     $.xmlrpc({
-      // url: 'http://localhost:8000/RPC2',
       url: xmlrpcURL,
       methodName: 'T_ORDER-INSERT',
-      params: obj,
-      success: function(response, status, jqXHR) { },
+      params: myParam,
+      success: function(response, status, jqXHR) {
+
+        if( caller.OptionIds.length >= 1 ) { // -- オプション選択ありの場合はオプション情報を追加登録
+          for ( i=0; i < caller.OptionIds.length ; i++ ) {
+            var myParam = [response[0],caller.OptionIds[i][0]];
+            // Debug
+            // console.log( "params[" +i+"] :" + myParam ); 
+
+            $.xmlrpc({
+              url: xmlrpcURL,
+              methodName: 'T_ORDER_OPTION-INSERT',
+              params: myParam,
+              success: function(response, status, jqXHR) {
+                caller.OrderId = response[0]; // 登録したOrderIDをプロパティとして取得
+                caller.updateObjArray(); // 注文内容を取得
+                // Debug
+                // console.log( "success : " + response + "," + status );
+              },
+              error: function(response, status, jqXHR){ 
+                alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
+            });
+          }
+        } else { // -- オプション選択なしの場合
+          this.OrderId = response[0]; // 登録したOrderIDをプロパティとして取得
+        }
+
+
+      },
       error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
     });
 
@@ -330,12 +368,17 @@ function Model_Date() { // -- 日時モデル --
     return yy + "/" + mm + "/" + dd + " (" + day[date.getDay()] +") " + HH + ":" + MM;
   }
 
+
   this.orderDate = function() { // -- 注文日付定義を返す
     var date = new Date(),
         yy = date.getYear(),  mm = date.getMonth() + 1, dd = date.getDate();
+        HH = date.getHours(), MM = date.getMinutes();
+        ss = date.getSeconds();
     if (yy < 2000) { yy += 1900; }
     if (mm < 10) { mm = "0" + mm; } if (dd < 10) { dd = "0" + dd; }
-    return yy + "/" + mm + "/" + dd;
+    if (HH < 10) { HH = "0" + HH; } if (MM < 10) { MM = "0" + MM; }
+    if (ss < 10) { ss = "0" + ss; } 
+    return yy + "-" + mm + "-" + dd + " " + HH + ":" + MM + ":" + ss;
   }
 
 }

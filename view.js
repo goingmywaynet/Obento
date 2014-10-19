@@ -72,7 +72,7 @@ function View_updateOrderPane(objMenuModel, objOptionModel) { // -- Order Pane �
       + objMenuModel.selectedObj.price          // 価格
       + "円 ");
   // 注文ボタン表示
-  $(".OrderPane").append( "<DIV class=\"Button\" id=\"orderSubmit\">" + "内容確定" + "</div>" );
+  // $(".OrderPane").append( "<DIV class=\"Button\" id=\"orderSubmit\">" + "内容確定" + "</div>" );
 
   // 注文ペイン表示
   $(".OrderPane").show();

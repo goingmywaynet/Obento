@@ -162,39 +162,49 @@ def SelectM_option_MENU(menu_id):
 server.register_function(SelectM_option_MENU,'getM_option_MENU')
 
 # T_ORDER への INSERT
-def InsertT_ORDER(order_date,user_id,menu_id,payment):
+def InsertT_order(order_date,user_id,shop_id,menu_id,payment,comment):
     db = sqlite3.connect(mydb, isolation_level=None)
-    sql = u"INSERT INTO T_ORDER (order_date, user_id, menu_id, payment) VALUES (?, ?, ?, ?)"
-    db.execute(sql, (order_date,user_id,menu_id,payment))
+    cur = db.cursor()
+    sql = u"INSERT INTO T_ORDER (order_date, user_id, shop_id, menu_id, payment, comment) VALUES (? , ?, ?, ?, ?, ?)"
+    cur.execute(sql, (order_date,user_id,shop_id,menu_id,payment,comment,))
+    debugFunc([sql,order_date,user_id,shop_id,menu_id,payment,comment])
+    lastID = cur.lastrowid
+    debugFunc([u"Coursol.lastrowid #SELECT last_insert_rowid",lastID])
     db.close()
-    debugFunc([sql,order_date,user_id,menu_id,payment])
-    return 1
-server.register_function(InsertT_ORDER,'T_ORDER-INSERT')
+    return lastID
+server.register_function(InsertT_order,'T_ORDER-INSERT')
 
 # T_ORDER への INSERT
 def InsertT_order_option(order_id,option_id):
     db = sqlite3.connect(mydb, isolation_level=None)
-    sql = u"INSERT INTO T_ORDER (order_date, user_id, menu_id, payment) VALUES (?, ?, ?, ?)"
-    db.execute(sql,order_date,user_id,menu_id,payment)
+    cur = db.cursor()
+    sql = u"INSERT INTO T_ORDER_OPTION (order_id, option_id) VALUES (?, ?)"
+    cur.execute(sql, (order_id,option_id,))
+    debugFunc([sql,order_id,option_id])
     db.close()
-    debugFunc([sql,order_date,user_id,menu_id,payment])
-    return 1
-server.register_function(InsertT_ORDER,'T_ORDER-INSERT')
+    return order_id
+server.register_function(InsertT_order_option,'T_ORDER_OPTION-INSERT')
 
-# T_ORDER への SELECT ALL
-def SelectT_ORDER():
+
+# T_ORDER と T_ORDER_OPTION への SELECT 
+def SelectT_ORDER(order_id):
     db = sqlite3.connect(mydb, isolation_level=None)
-    sql = u"SELECT id,order_date, user_id, menu_id, payment FROM T_ORDER"
-    cursor = db.execute(sql)
-    # Debug
-    # print cursor
-    # for row in cursor:
-    #     print row
-    res = cursor.fetchall()
+    cur = db.cursor()
+    sql = u"SELECT id,order_date, user_id, shop_id, menu_id, payment, comment FROM T_ORDER WHERE id = ?"
+    cur.execute(sql,(order_id,))
+    res = cur.fetchall()
+    debugFunc([sql,order_id,res])
+
+    sql = u"SELECT option_id FROM T_ORDER_OPTION WHERE order_id = ?"
+    cur.execute(sql,(order_id,))
+    options = cur.fetchall()
+    for option_id in options:
+        res.append(option_id)
+    debugFunc([sql,order_id,res])
+
     db.close()
-    debugFunc([sql,res])
     return res
-server.register_function(SelectT_ORDER,'T_ORDER-SELECT-ALL')
+server.register_function(SelectT_ORDER,'T_ORDER-SELECT')
 
 
 # Run the server's main loop
