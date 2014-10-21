@@ -174,7 +174,7 @@ def InsertT_order(order_date,user_id,shop_id,menu_id,payment,comment):
     return lastID
 server.register_function(InsertT_order,'T_ORDER-INSERT')
 
-# T_ORDER への INSERT
+# T_ORDER_OPTION への INSERT
 def InsertT_order_option(order_id,option_id):
     db = sqlite3.connect(mydb, isolation_level=None)
     cur = db.cursor()
@@ -186,8 +186,8 @@ def InsertT_order_option(order_id,option_id):
 server.register_function(InsertT_order_option,'T_ORDER_OPTION-INSERT')
 
 
-# T_ORDER と T_ORDER_OPTION への SELECT 
-def SelectT_ORDER(order_id):
+# T_ORDER と T_ORDER_OPTION への SELECT IDで返す
+def SelectT_ORDERid(order_id):
     db = sqlite3.connect(mydb, isolation_level=None)
     cur = db.cursor()
     sql = u"SELECT id,order_date, user_id, shop_id, menu_id, payment, comment FROM T_ORDER WHERE id = ?"
@@ -204,7 +204,51 @@ def SelectT_ORDER(order_id):
 
     db.close()
     return res
+server.register_function(SelectT_ORDERid,'T_ORDER-SELECT_ID')
+
+# T_ORDER と T_ORDER_OPTION への SELECT 日本語で返す
+def SelectT_ORDER(order_id):
+    db = sqlite3.connect(mydb, isolation_level=None)
+    cur = db.cursor()
+    sql = u"SELECT T_order.id , T_order.order_date , M_user.name \
+            , M_shop.name , M_menu.name , T_order.payment , T_order.comment \
+            FROM T_order \
+            INNER JOIN M_shop , M_user , M_menu \
+            ON T_order.shop_id = M_shop.id \
+               and T_order.user_id = M_user.id \
+               and T_order.menu_id = M_menu.id \
+            WHERE T_order.id = ? \
+                and T_order.order_date > date('now')"
+    cur.execute(sql,(order_id,))
+    res = cur.fetchall()
+    debugFunc([sql,order_id,res])
+
+    sql = u"SELECT M_option.name \
+            FROM T_order_option \
+            INNER JOIN M_option \
+            ON T_order_option.option_id = M_option.id \
+            WHERE T_order_option.order_id = ?"
+    cur.execute(sql,(order_id,))
+    options = cur.fetchall()
+    for option_id in options:
+        res.append(option_id)
+    debugFunc([sql,order_id,res])
+
+    db.close()
+    return res
 server.register_function(SelectT_ORDER,'T_ORDER-SELECT')
+
+# T_ORDER への SELECT order_id by user_id
+def SelectT_ORDER_ID_byUserId(user_id):
+    db = sqlite3.connect(mydb, isolation_level=None)
+    cur = db.cursor()
+    sql = u"SELECT id FROM T_ORDER WHERE user_id = ? AND order_date > date('now')"
+    cur.execute(sql,(user_id,))
+    res = cur.fetchall()
+    debugFunc([sql,user_id,res])
+    db.close()
+    return res
+server.register_function(SelectT_ORDER_ID_byUserId,'T_ORDER-SELECT_ID_BY_USER')
 
 
 # Run the server's main loop

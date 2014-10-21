@@ -35,6 +35,10 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
     // window.open("http://www.google.co.jp/search?q=" + $(this).text() + "&tbm=isch"); // ネタ
     // View_updateUserPane_UserSelected(objSectionModel,objUserModel); // 選択済み情報を表示する
     objShopModel.updateObjArray();                                  // SHOPボタンを表示する
+
+    objOrderModel.UserId = objUserModel.selectedID; //OrderModel にUserIDを渡す
+    objOrderModel.updateObjArray(); // OrderModelも更新する
+
     View_breadCrumbs(objUserModel); // パンくず更新
   });
 

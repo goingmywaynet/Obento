@@ -284,10 +284,48 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
   this.OrderId      = new Number();    // 注文ID
 
   // Over Write Methods
-  this.updateObjArray = function() { // --- 注文データを取得
+  this.updateObjArray = function() { // --- 選択した注文内容データを取得
     var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
     // XML-RPCサーバよりオーダ内容を取得
-    if (caller.OrderId != "") {
+
+    if (caller.OrderId == "") { // --- 注文IDを知らない場合は注文IDを取得する
+       $.xmlrpc({
+        url: xmlrpcURL,
+        methodName: 'T_ORDER-SELECT_ID_BY_USER',
+        params: [caller.UserId],
+        success: function(response, status, jqXHR) {
+          caller.OrderId  = response[0];
+          caller.objArray = response; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
+
+          // Debug
+          console.log("response is " + response + "caller.OrderId is " + caller.OrderId);
+
+          for (var i in caller.OrderId) {
+            $.xmlrpc({
+              url: xmlrpcURL,
+              methodName: 'T_ORDER-SELECT',
+              params: caller.OrderId[i],
+              success: function(response, status, jqXHR) {
+                caller.objArray = response; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
+                // caller.updateViewFunc ? caller.updateViewFunc(caller.objArray) : 0 ; // 画面更新
+                // Debug
+                console.log(caller.objArray);
+                for ( var i in caller.objArray) {
+                  $('.orderStatus').append(caller.objArray[i][0]+" "); //仮
+                }
+              },
+              error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
+            });
+          }
+        },
+        error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
+      });
+
+
+
+    }
+
+    if (caller.OrderId != "") { // --- 注文IDを知っている場合（注文直後）
       $.xmlrpc({
         url: xmlrpcURL,
         methodName: 'T_ORDER-SELECT',
@@ -321,7 +359,7 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
 
         if( caller.OptionIds.length >= 1 ) { // -- オプション選択ありの場合はオプション情報を追加登録
           for ( i=0; i < caller.OptionIds.length ; i++ ) {
-            var myParam = [response[0],caller.OptionIds[i][0]];
+            var myParam = [response[0],caller.OptionIds[i]];
             // Debug
             // console.log( "params[" +i+"] :" + myParam ); 
 
