@@ -61,19 +61,39 @@ function View_updateOptionPane(divObjArray,selectedIDs) { // -- Option Pane を�
 
 }
 
-function View_updateOrderPane(objMenuModel, objOptionModel) { // -- Order Pane 更新 (注文する商品を表示) --
+function View_updateOrderPane(objOrderModel) { // -- Order Pane 更新 --
   View_clearAllPanes(); // 各ペインをクリアし、Orderペインを非表示にする
-  // OrderPane に注文内容を表示する
-  $(".OrderPane > .OrderItem").append(
-      "ご注文は " 
-      + objMenuModel.selectedObj.bento_name     // 弁当名
-      + objOptionModel.selectedObj.option_name  // オプション名
-      + " " 
-      + objMenuModel.selectedObj.price          // 価格
-      + "円 ");
-  // 注文ボタン表示
-  // $(".OrderPane").append( "<DIV class=\"Button\" id=\"orderSubmit\">" + "内容確定" + "</div>" );
+  // オプション表示文字列生成
+  var myOptions = new String();
+  for (var i in objOrderModel.objOptionModel.selectedObjs ) {
+    myOptions = myOptions + " " +  objOrderModel.objOptionModel.selectedObjs[i].option_name;
+  }
 
+  if (objOrderModel.Submited == true) { // 今回のセッションで注文済みなら注文内容を表示
+    $(".OrderPane > .OrderItem").append(
+      objOrderModel.objShopModel.selectedObj.shop_name
+      + " " 
+      + objOrderModel.objMenuModel.selectedObj.bento_name
+      + " " 
+      + myOptions
+      + " "
+      + objOrderModel.objMenuModel.selectedObj.price
+      + "円 を注文しました。");
+    $(".OrderPane > .PaymentTotal").text(objOrderModel.PaymentTotal); // 支払い金額表示
+    $(".PaymentPane").hide(); // 入金画面は不要なので非表示
+
+  } else { // OrderPane に注文予定内容を表示する
+    $(".OrderPane > .OrderItem").append(
+        "いま選択しているのは " 
+        + objOrderModel.objShopModel.selectedObj.shop_name
+        + " " 
+        + objOrderModel.objMenuModel.selectedObj.bento_name
+        + " " 
+        + myOptions
+        + " "
+        + objOrderModel.objMenuModel.selectedObj.price
+        + "円 です");
+  }
   // 注文ペイン表示
   $(".OrderPane").show();
 }

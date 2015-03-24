@@ -272,33 +272,50 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
 
   // 継承
   Model.call(this, callback); // Model を継承
+  // 継承するPropertys
+  //  this.updateViewFunc = callback; // Viewを更新するためのコールバック関数
+  //  this.objArray = new Array();    // モデルデータ配列
+  //  this.selectedObj = {};          // モデル被選択object
+  //  this.selectedID = new Number(); // モデル被選択ID
+  // 継承するmethod                     
+  //  this.setUpdateView              // 画面更新コールバップ関数設定
+  //  this.setSelectedID              // idを元にObjectを指定
+  //  this.updateObjArray             // データを取得して画面更新
+
 
   // 独自のプロパティ
   this.OrderDate    = new String("");  // 注文日時
-  this.UserId       = new Number();    // ユーザID
-  this.ShopId       = new Number();    // 店舗ID
-  this.MenuId       = new Number();    // 注文メニューID
-  this.OptionIds    = new Array();     // 選択済みオプション
+  this.objUserModel;
+  this.objShopModel;
+  this.objMenuModel;
+  this.objOptionModel;
   this.PaymentTotal = new Number();    // 入金金額
   this.OrderComment = new String("");  // 入力コメント
   this.OrderId      = new Number();    // 注文ID
+  this.Submited     = new Boolean(false); // 注文確定フラグ
 
   // Over Write Methods
   this.updateObjArray = function() { // --- 選択した注文内容データを取得
     var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
     // XML-RPCサーバよりオーダ内容を取得
 
-    if (caller.OrderId == "") { // --- 注文IDを知らない場合は注文IDを取得する
+    if (caller.Submited == true) {
+      // Debug
+        console.log( "Order Submited" )
+      caller.updateViewFunc ? caller.updateViewFunc(this) : 0 ; // 画面更新
+    } 
+
+    if (caller.OrderId == "" && caller.Submited == false) { // --- 注文IDを知らない場合は注文IDを取得する
        $.xmlrpc({
         url: xmlrpcURL,
         methodName: 'T_ORDER-SELECT_ID_BY_USER',
-        params: [caller.UserId],
+        params: [caller.objUserModel.selectedID],
         success: function(response, status, jqXHR) {
           caller.OrderId  = response[0];
           caller.objArray = response; // 呼び出し元オブジェクトの objArray プロパティに結果を格納
 
           // Debug
-          console.log("response is " + response + "caller.OrderId is " + caller.OrderId);
+          // console.log("response is " + response + "caller.OrderId is " + caller.OrderId);
 
           for (var i in caller.OrderId) {
             $.xmlrpc({
@@ -320,12 +337,9 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
         },
         error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }
       });
-
-
-
     }
 
-    if (caller.OrderId != "") { // --- 注文IDを知っている場合（注文直後）
+    if (caller.OrderId != "" && caller.Submited == false) { // --- 注文IDを知っている場合（注文直後）
       $.xmlrpc({
         url: xmlrpcURL,
         methodName: 'T_ORDER-SELECT',
@@ -341,12 +355,35 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
     }
   }
 
+  this.preOrder = function(OrderDate, objUserModel , objShopModel , objMenuModel , objOptionModel , OrderComment) {  // --- ORDER を仮登録する
+
+    var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
+    this.OrderDate = OrderDate;
+    this.objUserModel = objUserModel;
+    this.objShopModel = objShopModel;
+    this.objMenuModel = objMenuModel;
+    this.objOptionModel = objOptionModel;
+    this.OrderComment  = OrderComment;
+    // Debug
+      console.log( "pre Order : " + this.OrderDate + ","
+          + this.PaymentTotal + ","
+          + this.OrderComment + ","
+      );
+
+    // Debug
+      console.log( "objOrderModel has ")
+      console.log( [this.objUserModel , this.objShopModel , this.objMenuModel
+          , this.objOptionModel] );
+
+    // caller.updateViewFunc ? caller.updateViewFunc(caller.objArray) : 0 ; // 画面更新
+    caller.updateViewFunc ? caller.updateViewFunc(this) : 0 ; // 画面更新
+    //this.updateViewFunc(this);
+
+  }
+
   this.submitOrder = function() { // --- ORDER を 登録する
     var caller = this; // この後 jQuery が this. を上書きしてしまうので、呼び出しもとを caller として宣言しておく
-
-    // var myParam = [ "'" + this.OrderDate + "'" , this.UserId,this.ShopId,this.MenuId,this.PaymentTotal,this.OrderComment];
-    var myParam = [ this.OrderDate, this.UserId, this.ShopId, this.MenuId, this.PaymentTotal, this.OrderComment];
-    
+    var myParam = [ this.OrderDate, this.objUserModel.selectedID, this.objShopModel.selectedID, this.objMenuModel.selectedID, this.PaymentTotal, this.OrderComment];
     // Debug
     // console.log( "params:" + myParam ); 
 
@@ -357,9 +394,9 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
       params: myParam,
       success: function(response, status, jqXHR) {
 
-        if( caller.OptionIds.length >= 1 ) { // -- オプション選択ありの場合はオプション情報を追加登録
-          for ( i=0; i < caller.OptionIds.length ; i++ ) {
-            var myParam = [response[0],caller.OptionIds[i]];
+        if( caller.objOptionModel.selectedIDs.length >= 1 ) { // -- オプション選択ありの場合はオプション情報を追加登録
+          for ( i=0; i < caller.objOptionModel.selectedIDs.length ; i++ ) {
+            var myParam = [response[0],caller.objOptionModel.selectedIDs[i]];
             // Debug
             // console.log( "params[" +i+"] :" + myParam ); 
 
@@ -369,6 +406,7 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
               params: myParam,
               success: function(response, status, jqXHR) {
                 caller.OrderId = response[0]; // 登録したOrderIDをプロパティとして取得
+                caller.Submited = true; // 注文済みフラグをON
                 caller.updateObjArray(); // 注文内容を取得
                 // Debug
                 // console.log( "success : " + response + "," + status );
@@ -378,9 +416,10 @@ function Model_Order(callback) { // -- Model の子クラス : ORDER --
             });
           }
         } else { // -- オプション選択なしの場合
-          this.OrderId = response[0]; // 登録したOrderIDをプロパティとして取得
+          caller.OrderId = response[0]; // 登録したOrderIDをプロパティとして取得
+          caller.Submited = true; // 注文済みフラグをON
+          caller.updateObjArray(); // 注文内容を取得
         }
-
 
       },
       error: function(response, status, jqXHR){ alert("XML-RPC ERROR : See console.log"); console.log(response + status + jqXHR); }

@@ -36,8 +36,8 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
     // View_updateUserPane_UserSelected(objSectionModel,objUserModel); // 選択済み情報を表示する
     objShopModel.updateObjArray();                                  // SHOPボタンを表示する
 
-    objOrderModel.UserId = objUserModel.selectedID; //OrderModel にUserIDを渡す
-    objOrderModel.updateObjArray(); // OrderModelも更新する
+    objOrderModel.objUserModel = objUserModel; //OrderModelに渡す
+    //objOrderModel.updateObjArray(); // OrderModelも更新する
 
     View_breadCrumbs(objUserModel); // パンくず更新
   });
@@ -63,8 +63,14 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
     } else { // -- 選択数に達した場合
       objOptionModel.updateViewFunc(objOptionModel.objArray, objOptionModel.selectedIDs); // 画面更新
 
-      View_updateOrderPane(objMenuModel,objOptionModel); // 注文内容表示
-      // ToDo : orderModel に内容を渡すこと
+      // View_updateOrderPane(objMenuModel,objOptionModel); // 選択内容表示
+      objOrderModel.preOrder( // 選択内容を仮設定
+          objDateModel.orderDate()
+          , objUserModel
+          , objShopModel
+          , objMenuModel
+          , objOptionModel
+          , $(".OrderPane > #comment").val());
 
       // Debug
       // console.log( "order_date:" + objDateModel.orderDate() +
@@ -92,23 +98,7 @@ $(document).ready(function(){ // -- DOM準備完了後開始処理 (MAIN Control
   $("#orderSubmit").live("click", function() {  // -- 注文ボタンを押したときの処理 --
 
     // 注文状況を orderModel に渡す
-    objOrderModel.OrderDate = objDateModel.orderDate();
-    objOrderModel.UserId    = objUserModel.selectedID;
-    objOrderModel.ShopId    = objShopModel.selectedID;
-    objOrderModel.MenuId    = objMenuModel.selectedID;
-    objOrderModel.OptionIds = objOptionModel.selectedIDs;
-    objOrderModel.OrderComment  = $(".OrderPane > #comment").val();
-
     if (objOrderModel.PaymentTotal >= objMenuModel.selectedObj.price) {
-      // Debug
-      // console.log( "Order : " + objOrderModel.OrderDate + ","
-      //     + objOrderModel.UserId + ","
-      //     + objOrderModel.ShopId + ","
-      //     + objOrderModel.MenuId + ","
-      //     + objOrderModel.OptionIds + ","
-      //     + objOrderModel.PaymentTotal + ","
-      //     + objOrderModel.OrderComment + ","
-      // );
       objOrderModel.submitOrder(); // 注文登録
     }
   });
